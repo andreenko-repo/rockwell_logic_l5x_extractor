@@ -26,7 +26,7 @@ This tool is designed for Control Engineers and Developers who need to document 
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/L5X-Logic-Exporter.git
+    git clone [https://github.com/YOUR_USERNAME/L5X-Logic-Exporter](https://github.com/andreenko-repo/rockwell_logic_l5x_extractor.git
     cd L5X-Logic-Exporter
     ```
 

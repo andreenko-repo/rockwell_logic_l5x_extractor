@@ -60,12 +60,12 @@ The tool generates three distinct text files in your specified output directory:
 #### 1. export_controller_info.txt
 
 Contains high-level metadata about the project.
-`
+```
 Name: MyFactory_PLC
 ProcessorType: 1756-L81E
 Revision: 32.11
 Description: Main Process Controller for Line 1
-`
+```
 
 #### 2. export_tags.txt
 

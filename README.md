@@ -39,65 +39,51 @@ The script accepts two arguments: the path to the input file and the output dire
 ```bash
 python l5x_export.py <Input_Path.L5X> <Output_Directory>
 ```
-Examples
+### Examples
 
 Process a file in the same folder:
 
-code
-Bash
-download
-content_copy
-expand_less
+```bash
 python l5x_export.py MyProject.L5X ./output
+```
 
 Process a file using absolute paths:
 
-code
-Bash
-download
-content_copy
-expand_less
+```bash
 python l5x_export.py "C:\PLC_Backups\Line1_V2.L5X" "C:\Reports\Line1"
-Output Files
+```
+
+### Output Files
 
 The tool generates three distinct text files in your specified output directory:
 
 1. export_controller_info.txt
 
 Contains high-level metadata about the project.
-
-code
-Text
-download
-content_copy
-expand_less
+```bash
 Name: MyFactory_PLC
 ProcessorType: 1756-L81E
 Revision: 32.11
 Description: Main Process Controller for Line 1
+```
+
 2. export_tags.txt
 
 A formatted table of all Controller Scope (Global) tags.
 
-code
-Text
-download
-content_copy
-expand_less
+```bash
 Name                           | Usage      | Type/Alias                     | Description
 ------------------------------ | ---------- | ------------------------------ | --------------------
 Sys_Heartbeat                  | Local      | DINT                           | Watchdog timer
 Pump_01_Start                  | Output     | Alias->Local:1:O.Data.0        | Main Pump Start Cmd
 Recipe_Data                    | Local      | udt_RecipeSystem               | Current Recipe parameters
+```
+
 3. export_programs.txt
 
 The core logic file. It recursively lists every Program, Local Tags, Routines, and the Logic content.
 
-code
-Text
-download
-content_copy
-expand_less
+```bash
 PROGRAM: MainProgram
 Desc:    Core Sequencing Logic
 ===========================================================================
@@ -126,52 +112,12 @@ Desc:    Core Sequencing Logic
       IF Step_Index = 10 THEN
           Pump_Cmd := 1;
       END_IF;
-🤝 Contributing
+```
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-Fork the project.
-
-Create your feature branch (git checkout -b feature/AmazingFeature).
-
-Commit your changes (git commit -m 'Add some AmazingFeature').
-
-Push to the branch (git push origin feature/AmazingFeature).
-
-Open a Pull Request.
-
-⚠️ Disclaimer
+## Disclaimer
 
 This tool is an independent open-source project and is not affiliated with, endorsed by, or supported by Rockwell Automation.
 
 Read-Only: This tool only reads L5X files; it does not modify them.
 
 Verification: Always verify the actual logic in the Studio 5000 environment before making engineering decisions. The extraction process is intended for documentation and analysis purposes only.
-
-📄 License
-
-Distributed under the MIT License. See LICENSE for more information.
-
-code
-Code
-download
-content_copy
-expand_less
----
-
-### Bonus: The `.gitignore` File
-Since you are creating a Python repo, you should add a `.gitignore` file to prevent uploading junk files.
-
-**File:** `.gitignore`
-```text
-# Python cache
-__pycache__/
-*.py[cod]
-
-# Output directories (don't upload your test exports)
-output/
-*.txt
-
-# OS specific
-.DS_Store
-Thumbs.db

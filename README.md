@@ -2,7 +2,7 @@
 
 A lightweight, zero-dependency Python tool to parse Rockwell Automation Studio 5000 `.L5X` export files and convert them into human-readable text reports.
 
-This tool is designed for Control Engineers and Developers who need to document code, track changes in version control (Git), or perform static analysis on PLC logic without opening the Studio 5000 IDE.
+This tool is designed for Control Engineers and Developers who need to document code, or perform static analysis on PLC logic without opening the Studio 5000 IDE.
 
 ## Features
 

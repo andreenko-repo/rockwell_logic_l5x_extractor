@@ -71,7 +71,7 @@ Description: Main Process Controller for Line 1
 
 A formatted table of all Controller Scope (Global) tags.
 
-```bash
+```
 Name                           | Usage      | Type/Alias                     | Description
 ------------------------------ | ---------- | ------------------------------ | --------------------
 Sys_Heartbeat                  | Local      | DINT                           | Watchdog timer
@@ -83,7 +83,7 @@ Recipe_Data                    | Local      | udt_RecipeSystem               | C
 
 The core logic file. It recursively lists every Program, Local Tags, Routines, and the Logic content.
 
-```bash
+```
 PROGRAM: MainProgram
 Desc:    Core Sequencing Logic
 ===========================================================================

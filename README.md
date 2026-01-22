@@ -57,7 +57,7 @@ python l5x_export.py "C:\PLC_Backups\Line1_V2.L5X" "C:\Reports\Line1"
 
 The tool generates three distinct text files in your specified output directory:
 
-1. export_controller_info.txt
+#### 1. export_controller_info.txt
 
 Contains high-level metadata about the project.
 ```bash
@@ -67,7 +67,7 @@ Revision: 32.11
 Description: Main Process Controller for Line 1
 ```
 
-2. export_tags.txt
+#### 2. export_tags.txt
 
 A formatted table of all Controller Scope (Global) tags.
 
@@ -79,7 +79,7 @@ Pump_01_Start                  | Output     | Alias->Local:1:O.Data.0        | M
 Recipe_Data                    | Local      | udt_RecipeSystem               | Current Recipe parameters
 ```
 
-3. export_programs.txt
+#### 3. export_programs.txt
 
 The core logic file. It recursively lists every Program, Local Tags, Routines, and the Logic content.
 

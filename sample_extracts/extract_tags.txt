@@ -1,0 +1,156 @@
+Name                           | Usage      | Type/Alias                     | Description
+------------------------------ | ---------- | ------------------------------ | --------------------
+AlmActive                      | Local      | Alias->Local:3:O.Data.14       | Compressor Alarm Active
+AlmHornSil                     | Local      | BOOL                           | 
+Alm_Fire                       | Local      | Alias->Local:2:I.Data.9        | 
+Alm_Gas                        | Local      | Alias->Local:2:I.Data.7        | 
+Alm_Vib                        | Local      | Alias->Local:2:I.Data.11       | 
+ASC_Auto                       | Local      | BOOL                           | Anti Surge Control to Aut
+ASC_Enable                     | Local      | BOOL                           | Anti Surge Control Enable
+ASC_Flow                       | Local      | REAL                           | Anti Surge Control Flow
+ASC_Ki                         | Local      | REAL                           | Anti Surge Control Ki
+ASC_Kp                         | Local      | REAL                           | Anti Surge Control Kp
+ASC_LowMarginAlm               | Local      | BOOL                           | Anti Surge Control Low Margine Alarm
+ASC_MarginSP                   | Local      | REAL                           | Anti Surge Control Magin SP
+ASC_PressRatio                 | Local      | REAL                           | Anti Surge Control Pressure Ratio
+ASC_RecycleCmd                 | Local      | REAL                           | Anti Surge Control Recycle Cmd
+ASC_SurgeIndex                 | Local      | REAL                           | Anti Surge Control Surge Index
+ASC_SurgeLimit                 | Local      | REAL                           | Anti Surge Control Surge Limit
+ASC_SurgeMargin                | Local      | REAL                           | Anti Surge Control Surge Margin
+BDV101_Closed                  | Local      | Alias->Local:2:I.Data.5        | 
+BDV101_CmdOpen                 | Local      | Alias->Local:3:O.Data.4        | Open Cmd BDV-101 Blowdown Vavle
+BDV101_Open                    | Local      | Alias->Local:2:I.Data.4        | 
+CFG_FanOffTemp                 | Local      | REAL                           | Cooler Fan Off Temp (C)
+CFG_FanOnTemp                  | Local      | REAL                           | Cooler Fan On Temp (C)
+CFG_LO_Press_Min               | Local      | REAL                           | Min Lube Oil Pressure (barg)
+CFG_PostLubeTime               | Local      | DINT                           | Post-Lube Time Normal (ms)
+CFG_PostLubeTripTime           | Local      | DINT                           | Post-Lube Time After Trip (ms)
+CFG_PrelubeTime                | Local      | DINT                           | Prelube Time Required (ms)
+CFG_PrelubeTimeout             | Local      | DINT                           | Prelube Timeout (ms)
+CFG_PT102_H                    | Local      | REAL                           | Discharge Press High Alarm (barg)
+CFG_PT102_HH                   | Local      | REAL                           | Discharge Press HH Trip (barg)
+CFG_PT201_L                    | Local      | REAL                           | Lube Oil Press Low Alarm (barg)
+CFG_PT201_LL                   | Local      | REAL                           | Lube Oil Press LL Trip (barg)
+CFG_RecycleMinRun              | Local      | REAL                           | Min Recycle While Running (%)
+CFG_RecycleShutdown            | Local      | REAL                           | Recycle for Shutdown (%)
+CFG_SpeedMax                   | Local      | REAL                           | VFD Max Speed (%)
+CFG_SpeedMin                   | Local      | REAL                           | VFD Min Speed (%)
+CFG_SpeedStart                 | Local      | REAL                           | VFD Start Speed (%)
+CFG_SurgeMarginAlm             | Local      | REAL                           | Surge Margin Alarm (%)
+CFG_SurgeMarginTrip            | Local      | REAL                           | Surge Margin Trip (%)
+CFG_TripDelay                  | Local      | DINT                           | Process Trip Delay (ms)
+CFG_TT102_H                    | Local      | REAL                           | Discharge Temp High Alarm (C)
+CFG_TT102_HH                   | Local      | REAL                           | Discharge Temp HH Trip (C)
+CFG_ValveTimeout               | Local      | DINT                           | Valve Travel Timeout (ms)
+CFG_VFDStartTimeout            | Local      | DINT                           | VFD Start Timeout (ms)
+CFG_WarmupTime                 | Local      | DINT                           | Warmup Time (ms)
+CmdReset                       | Local      | BOOL                           | 
+CmdStart                       | Local      | BOOL                           | 
+CmdStop                        | Local      | BOOL                           | 
+CV101_Cmd                      | Local      | REAL                           | CV-101 Recycle Valve Command (%)
+FanCmd                         | Local      | Alias->Local:3:O.Data.6        | Fan Cmd (1=Start,0=Stop)
+FanFlt                         | Local      | Alias->Local:1:I.Data.6        | 
+FanRun                         | Local      | Alias->Local:1:I.Data.5        | 
+FT101_Fault                    | Local      | Alias->Local:6:I.Ch0Fault      | 
+FT101_PV                       | Local      | Alias->Local:6:I.Ch0Data       | FT-101 Compressor Flow (m3/h)
+HMI_Reset                      | Local      | BOOL                           | Reset Cmd from HMI
+HMI_SilenceHorn                | Local      | BOOL                           | Silence Horn Cmd from HMI
+HMI_SP_Press                   | Local      | REAL                           | 
+HMI_Start                      | Local      | BOOL                           | Start Cmd from HMI
+HMI_Stop                       | Local      | BOOL                           | Stop Cmd from HMI
+LO_PressOK                     | Local      | BOOL                           | LO Pressure OK
+LO_PumpCmd                     | Local      | Alias->Local:3:O.Data.5        | LO Pump Cmd - Start
+LO_PumpFlt                     | Local      | Alias->Local:2:I.Data.14       | 
+LO_PumpRun                     | Local      | Alias->Local:2:I.Data.13       | 
+ModeLocal                      | Local      | BOOL                           | Local Mode
+ModeRemote                     | Local      | BOOL                           | Remote Mode
+ONS_Reset                      | Local      | BOOL                           | 
+ONS_Start                      | Local      | BOOL                           | 
+ONS_Trip                       | Local      | BOOL                           | 
+PermOK                         | Local      | BOOL                           | 
+Perm_BDV                       | Local      | BOOL                           | Permissive BDV-101 Blowdown Valve
+Perm_ESD                       | Local      | Alias->Local:2:I.Data.6        | 
+Perm_Instr                     | Local      | BOOL                           | 
+Perm_LO_Lvl                    | Local      | Alias->Local:2:I.Data.15       | 
+Perm_NoTrip                    | Local      | BOOL                           | 
+Perm_VFD                       | Local      | BOOL                           | 
+PID_Auto                       | Local      | BOOL                           | PID Mode - Auto
+PID_Enable                     | Local      | BOOL                           | PID Enable Cmd
+PID_Err                        | Local      | REAL                           | PID Error
+PID_Int                        | Local      | REAL                           | PID Interlock
+PID_Ki                         | Local      | REAL                           | PID Ki
+PID_Kp                         | Local      | REAL                           | PID Kp
+PID_Out                        | Local      | REAL                           | PID CV
+PID_PV                         | Local      | REAL                           | PID PV
+PID_SP                         | Local      | REAL                           | PID Discharge Press SP (barg)
+PT101_Fault                    | Local      | Alias->Local:4:I.Ch0Fault      | PT-101 Suction Pressure Fault
+PT101_PV                       | Local      | Alias->Local:4:I.Ch0Data       | PT-101 Suction Pressure (barg)
+PT102_Fault                    | Local      | Alias->Local:4:I.Ch2Fault      | PT-102 Discharge Pressure Fault
+PT102_HH_Alm                   | Local      | BOOL                           | PT-102 Discharge Pressure High-High Alar..
+PT102_H_Alm                    | Local      | BOOL                           | PT-102 Discharge Pressure High Alarm
+PT102_PV                       | Local      | Alias->Local:4:I.Ch2Data       | PT-102 Discharge Pressure (barg)
+PT201_Fault                    | Local      | Alias->Local:6:I.Ch1Fault      | PT-201 Lube Oil Pressure Fault
+PT201_LL_Alm                   | Local      | BOOL                           | PT-201 Lube Oil Pressure Low-Low Alarm
+PT201_L_Alm                    | Local      | BOOL                           | PT-201 Lube Oil Pressure Low Alarm
+PT201_PV                       | Local      | Alias->Local:6:I.Ch1Data       | PT-201 Lube Oil Pressure (barg)
+RunHours                       | Local      | REAL                           | 
+ScanTime                       | Local      | REAL                           | 
+StartCount                     | Local      | DINT                           | 
+State                          | Local      | DINT                           | State: 0=Stop 10=Prelube 20=Valves 30=VF..
+StsESD                         | Local      | BOOL                           | ESD Status (1=ESD, 0=Healthy)
+StsReady                       | Local      | Alias->Local:3:O.Data.10       | Compressor Ready
+StsRunning                     | Local      | Alias->Local:3:O.Data.11       | Compressor Running
+StsStarting                    | Local      | BOOL                           | Compressor Starting
+StsStopped                     | Local      | BOOL                           | Compressor Stopped
+StsStopping                    | Local      | BOOL                           | Compressor Stopping
+StsTripped                     | Local      | BOOL                           | Compressor Tripped
+TMR_PostLube                   | Local      | TIMER                          | 
+TMR_Prelube                    | Local      | TIMER                          | 
+TMR_Trip_DischP                | Local      | TIMER                          | 
+TMR_Trip_DischT                | Local      | TIMER                          | 
+TMR_Trip_LO                    | Local      | TIMER                          | 
+TMR_Valve                      | Local      | TIMER                          | 
+TMR_VFDStart                   | Local      | TIMER                          | 
+TMR_Warmup                     | Local      | TIMER                          | 
+TMR_XV101                      | Local      | TIMER                          | 
+TMR_XV102                      | Local      | TIMER                          | 
+TripActive                     | Local      | BOOL                           | Trip Active
+TripCode                       | Local      | DINT                           | 1=ESD 2=Fire 3=Vib 4=VFD 5=LO_P 6=DischT..
+TripCount                      | Local      | DINT                           | 
+TripLatch                      | Local      | BOOL                           | 
+Trip_Comms                     | Local      | BOOL                           | Trip VFD Communication Fault
+Trip_DischP                    | Local      | BOOL                           | Discharge Pressure Trip
+Trip_DischT                    | Local      | BOOL                           | Discharge Temperatue Trip
+Trip_ESD                       | Local      | Alias->Local:2:I.Data.6        | 
+Trip_Fire                      | Local      | BOOL                           | Fire Alarm Trip
+Trip_LO_P                      | Local      | BOOL                           | Lube Oil Trip
+Trip_Surge                     | Local      | BOOL                           | Surge Trip
+Trip_VFD                       | Local      | BOOL                           | Trip VFD Fault
+Trip_Vib                       | Local      | Alias->Local:2:I.Data.12       | 
+TT101_Fault                    | Local      | Alias->Local:4:I.Ch1Fault      | TT-101 Suction Temperature Fault
+TT101_PV                       | Local      | Alias->Local:4:I.Ch1Data       | TT-101 Suction Temperature (C)
+TT102_Fault                    | Local      | Alias->Local:4:I.Ch3Fault      | TT-102 Discharge Temperature Fault
+TT102_HH_Alm                   | Local      | BOOL                           | TT-102 Discharge Temperature HH Alarm
+TT102_H_Alm                    | Local      | BOOL                           | TT-102 Discharge Temperature High Alarm
+TT102_PV                       | Local      | Alias->Local:4:I.Ch3Data       | TT-102 Discharge Temperature (C)
+TT201_PV                       | Local      | Alias->Local:6:I.Ch2Data       | TT-201 Lube Oil Temperature (C)
+TT301_PV                       | Local      | Alias->Local:6:I.Ch3Data       | TT-301 Cooler Outlet Temp (C)
+ValvesOpen                     | Local      | BOOL                           | Both Suction Valves Open
+VFD_CmdReset                   | Local      | Alias->Local:3:O.Data.9        | Cmd to VFD - Reset
+VFD_CmdStart                   | Local      | Alias->Local:3:O.Data.7        | Cmd to VFD - Start
+VFD_CmdStop                    | Local      | Alias->Local:3:O.Data.8        | Cmd to VFD - Stop
+VFD_CommFlt                    | Local      | Alias->Local:1:I.Data.10       | 
+VFD_Faulted                    | Local      | Alias->Local:1:I.Data.9        | 
+VFD_Ready                      | Local      | Alias->Local:1:I.Data.7        | 
+VFD_Running                    | Local      | Alias->Local:1:I.Data.8        | 
+VFD_SpeedCmd                   | Local      | REAL                           | VFD Speed Command (%)
+XV101_Closed                   | Local      | Alias->Local:2:I.Data.1        | 
+XV101_CmdClose                 | Local      | Alias->Local:3:O.Data.1        | Close Cmd to XV101 Suction Vavle
+XV101_CmdOpen                  | Local      | Alias->Local:3:O.Data.0        | Open Cmd - XV101 Suction Vavle
+XV101_Fault                    | Local      | BOOL                           | Fault XV101 Suction Vavle
+XV101_Open                     | Local      | Alias->Local:2:I.Data.0        | 
+XV102_Closed                   | Local      | Alias->Local:2:I.Data.3        | 
+XV102_CmdClose                 | Local      | Alias->Local:3:O.Data.3        | Close Cmd to XV102 Suction Vavle
+XV102_CmdOpen                  | Local      | Alias->Local:3:O.Data.2        | Open Cmd to XV102 Suction Vavle
+XV102_Fault                    | Local      | BOOL                           | Fault XV101 Suction Vavle
+XV102_Open                     | Local      | Alias->Local:2:I.Data.2        | 

@@ -1,0 +1,12 @@
+I/O MODULES - Found 7
+================================================================================
+
+Name                      | Catalog Number       | Parent               | Description
+------------------------- | -------------------- | -------------------- | ------------------------------
+Local                     | 1756-L82E            | Local:1              | 
+DI_Slot1                  | 1756-IB16            | Local:1              | 
+DI_Slot2                  | 1756-IB16            | Local:1              | 
+DO_Slot3                  | 1756-OB16E           | Local:1              | 
+AI_Slot4                  | 1756-IF8             | Local:1              | 
+AO_Slot5                  | 1756-OF8             | Local:1              | 
+AI_Slot6                  | 1756-IF8             | Local:1              | 

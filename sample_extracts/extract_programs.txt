@@ -1,0 +1,821 @@
+PROGRAM: MainProgram
+Main Routine: MainRoutine
+===========================================================================
+
+  [LOCAL TAGS] - Found 0
+
+  [ROUTINES & LOGIC] - Found 10
+
+    ============================================================
+    ROUTINE: MainRoutine (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========================================================================
+BOOSTER GAS COMPRESSOR STATION - PRODUCTION PROGRAM
+Controller: 1756-L82E
+I/O: Slot1=DI(16pt) Slot2=DI(16pt) Slot3=DO(16pt) Slot4=AI(4ch) Slot5=AO(8ch)
+======================================================================== */
+      
+JSR(R00_AnalogAlarms,0);
+
+      ----------------------------------------
+    [Rung 1]
+      
+JSR(R01_Inputs,0);
+
+      ----------------------------------------
+    [Rung 2]
+      
+JSR(R02_Permissives,0);
+
+      ----------------------------------------
+    [Rung 3]
+      
+JSR(R03_Trips,0);
+
+      ----------------------------------------
+    [Rung 4]
+      
+JSR(R04_Sequence,0);
+
+      ----------------------------------------
+    [Rung 5]
+      
+JSR(R05_Devices,0);
+
+      ----------------------------------------
+    [Rung 6]
+      
+JSR(R06_Control,0);
+
+      ----------------------------------------
+    [Rung 7]
+      
+JSR(R07_Alarms,0);
+
+      ----------------------------------------
+    [Rung 8]
+      
+JSR(R08_Outputs,0);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R00_AnalogAlarms (RLL)
+    ============================================================
+    [Rung 0]
+      /* PT-102 Alarms */
+      
+GRT(PT102_PV,CFG_PT102_HH)OTE(PT102_HH_Alm);
+
+      ----------------------------------------
+    [Rung 1]
+      
+GRT(PT102_PV,CFG_PT102_H)OTE(PT102_H_Alm);
+
+      ----------------------------------------
+    [Rung 2]
+      /* TT-102 Alarms */
+      
+GRT(TT102_PV,CFG_TT102_HH)OTE(TT102_HH_Alm);
+
+      ----------------------------------------
+    [Rung 3]
+      
+GRT(TT102_PV,CFG_TT102_H)OTE(TT102_H_Alm);
+
+      ----------------------------------------
+    [Rung 4]
+      /* PT-201 Lube Oil Pressure Alarms */
+      
+LES(PT201_PV,CFG_PT201_LL)OTE(PT201_LL_Alm);
+
+      ----------------------------------------
+    [Rung 5]
+      
+LES(PT201_PV,CFG_PT201_L)OTE(PT201_L_Alm);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R01_Inputs (RLL)
+    ============================================================
+    [Rung 0]
+      /* Mode Selection */
+      
+XIC(Local:1:I.Data.0)OTE(ModeLocal);
+
+      ----------------------------------------
+    [Rung 1]
+      
+XIO(Local:1:I.Data.0)OTE(ModeRemote);
+
+      ----------------------------------------
+    [Rung 2]
+      /* Both Isolation Valves Open */
+      
+XIC(XV101_Open)XIC(XV102_Open)OTE(ValvesOpen);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R02_Permissives (RLL)
+    ============================================================
+    [Rung 0]
+      /* No Active Trip Latched */
+      
+XIO(TripLatch)OTE(Perm_NoTrip);
+
+      ----------------------------------------
+    [Rung 1]
+      /* VFD Ready and Not Faulted */
+      
+XIC(VFD_Ready)XIO(VFD_Faulted)XIO(VFD_CommFlt)OTE(Perm_VFD);
+
+      ----------------------------------------
+    [Rung 2]
+      /* Blowdown Valve Closed */
+      
+XIC(BDV101_Closed)OTE(Perm_BDV);
+
+      ----------------------------------------
+    [Rung 3]
+      /* Critical Instruments Healthy */
+      
+XIO(PT101_Fault)XIO(PT102_Fault)XIO(TT102_Fault)OTE(Perm_Instr);
+
+      ----------------------------------------
+    [Rung 4]
+      /* Combine All Permissives */
+      
+XIO(Perm_ESD)XIC(Perm_NoTrip)XIO(Perm_LO_Lvl)XIC(Perm_VFD)XIC(Perm_BDV)XIC(Perm_Instr)OTE(PermOK);
+
+      ----------------------------------------
+    [Rung 5]
+      /* Ready Status */
+      
+XIC(PermOK)XIC(StsStopped)OTE(StsReady);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R03_Trips (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========== TRIP PROCESSING ========== */
+      
+NOP();
+
+      ----------------------------------------
+    [Rung 1]
+      /* Fire Alarm */
+      
+XIC(Alm_Fire)OTE(Trip_Fire);
+
+      ----------------------------------------
+    [Rung 2]
+      /* VFD Fault while running */
+      
+XIC(VFD_Faulted)XIC(StsRunning)OTE(Trip_VFD);
+
+      ----------------------------------------
+    [Rung 3]
+      /* VFD Comms Fault while running */
+      
+XIC(VFD_CommFlt)XIC(StsRunning)OTE(Trip_Comms);
+
+      ----------------------------------------
+    [Rung 4]
+      /* ===== DELAYED TRIPS (2 sec filter) =====
+Lube Oil Pressure Low-Low */
+      
+[XIC(Local:2:I.Data.15) ,XIC(PT201_LL_Alm) ]XIC(StsRunning)TON(TMR_Trip_LO,?,?);
+
+      ----------------------------------------
+    [Rung 5]
+      
+GRT(TMR_Trip_LO.ACC,CFG_TripDelay)OTE(Trip_LO_P);
+
+      ----------------------------------------
+    [Rung 6]
+      /* Discharge Temperature HH */
+      
+XIC(TT102_HH_Alm)XIC(StsRunning)TON(TMR_Trip_DischT,?,?);
+
+      ----------------------------------------
+    [Rung 7]
+      
+GRT(TMR_Trip_DischT.ACC,CFG_TripDelay)OTE(Trip_DischT);
+
+      ----------------------------------------
+    [Rung 8]
+      /* Discharge Pressure HH */
+      
+XIC(PT102_HH_Alm)XIC(StsRunning)TON(TMR_Trip_DischP,?,?);
+
+      ----------------------------------------
+    [Rung 9]
+      
+GRT(TMR_Trip_DischP.ACC,CFG_TripDelay)OTE(Trip_DischP);
+
+      ----------------------------------------
+    [Rung 10]
+      /* Surge Trip (low margin) */
+      
+LES(ASC_SurgeMargin,CFG_SurgeMarginTrip)XIC(StsRunning)OTE(Trip_Surge);
+
+      ----------------------------------------
+    [Rung 11]
+      /* ===== COMBINE ALL TRIPS ===== */
+      
+[XIO(Trip_ESD) ,XIC(Trip_Fire) ,XIC(Trip_Vib) ,XIC(Trip_VFD) ,XIC(Trip_Comms) ,XIC(Trip_LO_P) ,XIC(Trip_DischT) ,XIC(Trip_DischP) ,XIC(Trip_Surge) ]OTE(TripActive);
+
+      ----------------------------------------
+    [Rung 12]
+      /* Latch Trip */
+      
+XIC(TripActive)OTL(TripLatch);
+
+      ----------------------------------------
+    [Rung 13]
+      /* Reset Trip (when condition cleared) */
+      
+XIC(CmdReset)XIO(TripActive)OTU(TripLatch);
+
+      ----------------------------------------
+    [Rung 14]
+      /* ===== FIRST-OUT TRIP CODE CAPTURE ===== */
+      
+XIC(TripActive)EQU(TripCode,0)XIO(Trip_ESD)MOV(1,TripCode);
+
+      ----------------------------------------
+    [Rung 15]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_Fire)MOV(2,TripCode);
+
+      ----------------------------------------
+    [Rung 16]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_Vib)MOV(3,TripCode);
+
+      ----------------------------------------
+    [Rung 17]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_VFD)MOV(4,TripCode);
+
+      ----------------------------------------
+    [Rung 18]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_LO_P)MOV(5,TripCode);
+
+      ----------------------------------------
+    [Rung 19]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_DischT)MOV(6,TripCode);
+
+      ----------------------------------------
+    [Rung 20]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_DischP)MOV(7,TripCode);
+
+      ----------------------------------------
+    [Rung 21]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_Surge)MOV(8,TripCode);
+
+      ----------------------------------------
+    [Rung 22]
+      
+XIC(TripActive)EQU(TripCode,0)XIC(Trip_Comms)MOV(9,TripCode);
+
+      ----------------------------------------
+    [Rung 23]
+      /* Clear trip code when reset */
+      
+XIO(TripLatch)MOV(0,TripCode);
+
+      ----------------------------------------
+    [Rung 24]
+      /* Trip Counter */
+      
+ONS(TripActive)ADD(TripCount,1,TripCount);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R04_Sequence (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========== SEQUENCE STATE MACHINE ==========
+State: 0=Stopped 10=Prelube 20=OpenValves 30=StartVFD 40=Warmup 50=Running 60=Shutdown 90=Tripped 95=ESD */
+      
+NOP();
+
+      ----------------------------------------
+    [Rung 1]
+      /* ===== COMMAND PROCESSING =====
+Start Command from Local PB or HMI */
+      
+[XIC(Local:1:I.Data.1) XIC(ModeLocal) ,XIC(HMI_Start) XIC(ModeRemote) ]XIO(ONS_Start)OTL(CmdStart)OTE(ONS_Start);
+
+      ----------------------------------------
+    [Rung 2]
+      /* Stop Command (Local PB always works) */
+      
+[XIC(Local:1:I.Data.2) ,XIC(HMI_Stop) ]OTL(CmdStop);
+
+      ----------------------------------------
+    [Rung 3]
+      /* Reset Command */
+      
+[XIC(Local:1:I.Data.3) XIC(ModeLocal) ,XIC(HMI_Reset) XIC(ModeRemote) ]XIO(ONS_Reset)OTL(CmdReset)OTE(ONS_Reset);
+
+      ----------------------------------------
+    [Rung 4]
+      /* ===== ESD/FIRE - HIGHEST PRIORITY ===== */
+      
+[XIO(Trip_ESD) ,XIC(Trip_Fire) ]MOV(95,State);
+
+      ----------------------------------------
+    [Rung 5]
+      /* ===== TRIP PRIORITY ===== */
+      
+XIC(TripActive)NEQ(State,0)NEQ(State,90)NEQ(State,95)MOV(90,State);
+
+      ----------------------------------------
+    [Rung 6]
+      /* ===== STATE 0: STOPPED ===== */
+      
+EQU(State,0)OTE(StsStopped)OTU(StsStarting)OTU(StsRunning)OTU(StsStopping)OTU(StsTripped)OTU(StsESD)OTU(VFD_CmdStart)OTU(LO_PumpCmd)OTU(LO_PressOK);
+
+      ----------------------------------------
+    [Rung 7]
+      /* Transition: STOPPED -> PRELUBE on Start */
+      
+EQU(State,0)XIC(CmdStart)XIC(PermOK)MOV(10,State)ADD(StartCount,1,StartCount)RES(TMR_Prelube)OTU(CmdStart);
+
+      ----------------------------------------
+    [Rung 8]
+      /* ===== STATE 10: PRELUBE ===== */
+      
+EQU(State,10)OTU(StsStopped)OTE(StsStarting)OTE(LO_PumpCmd)TON(TMR_Prelube,?,?);
+
+      ----------------------------------------
+    [Rung 9]
+      /* Check Lube Oil Pressure OK */
+      
+EQU(State,10)GEQ(PT201_PV,CFG_LO_Press_Min)OTE(LO_PressOK);
+
+      ----------------------------------------
+    [Rung 10]
+      /* Transition: PRELUBE -> OPEN_VALVES */
+      
+EQU(State,10)XIC(LO_PressOK)GRT(TMR_Prelube.ACC,CFG_PrelubeTime)MOV(20,State)RES(TMR_Valve);
+
+      ----------------------------------------
+    [Rung 11]
+      /* Timeout: PRELUBE -> TRIPPED (failed to build pressure) */
+      
+EQU(State,10)GRT(TMR_Prelube.ACC,CFG_PrelubeTimeout)OTL(TripLatch)MOV(5,TripCode)MOV(90,State);
+
+      ----------------------------------------
+    [Rung 12]
+      /* Abort: PRELUBE -> SHUTDOWN on Stop */
+      
+EQU(State,10)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);
+
+      ----------------------------------------
+    [Rung 13]
+      /* ===== STATE 20: OPEN VALVES ===== */
+      
+EQU(State,20)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTU(XV101_CmdClose)OTU(BDV101_CmdOpen);
+
+      ----------------------------------------
+    [Rung 14]
+      
+EQU(State,20)TON(TMR_Valve,?,?);
+
+      ----------------------------------------
+    [Rung 15]
+      /* Open discharge valve after suction opens */
+      
+EQU(State,20)XIC(XV101_Open)OTE(XV102_CmdOpen)OTU(XV102_CmdClose);
+
+      ----------------------------------------
+    [Rung 16]
+      /* Transition: OPEN_VALVES -> START_VFD */
+      
+EQU(State,20)XIC(ValvesOpen)MOV(30,State)RES(TMR_VFDStart);
+
+      ----------------------------------------
+    [Rung 17]
+      /* Timeout: OPEN_VALVES -> TRIPPED */
+      
+EQU(State,20)GRT(TMR_Valve.ACC,CFG_ValveTimeout)OTL(TripLatch)MOV(90,State);
+
+      ----------------------------------------
+    [Rung 18]
+      
+EQU(State,20)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);
+
+      ----------------------------------------
+    [Rung 19]
+      /* ===== STATE 30: START VFD ===== */
+      
+EQU(State,30)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(VFD_CmdStart)MOV(CFG_SpeedStart,Local:5:O.Ch1Data);
+
+      ----------------------------------------
+    [Rung 20]
+      
+EQU(State,30)TON(TMR_VFDStart,?,?);
+
+      ----------------------------------------
+    [Rung 21]
+      /* Transition: START_VFD -> WARMUP */
+      
+EQU(State,30)XIC(VFD_Running)MOV(40,State)RES(TMR_Warmup);
+
+      ----------------------------------------
+    [Rung 22]
+      /* Timeout: START_VFD -> TRIPPED */
+      
+EQU(State,30)GRT(TMR_VFDStart.ACC,CFG_VFDStartTimeout)OTL(TripLatch)MOV(4,TripCode)MOV(90,State);
+
+      ----------------------------------------
+    [Rung 23]
+      
+EQU(State,30)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);
+
+      ----------------------------------------
+    [Rung 24]
+      /* ===== STATE 40: WARMUP ===== */
+      
+EQU(State,40)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(VFD_CmdStart)OTE(ASC_Enable);
+
+      ----------------------------------------
+    [Rung 25]
+      
+EQU(State,40)TON(TMR_Warmup,?,?);
+
+      ----------------------------------------
+    [Rung 26]
+      /* Transition: WARMUP -> RUNNING */
+      
+EQU(State,40)GRT(TMR_Warmup.ACC,CFG_WarmupTime)MOV(50,State);
+
+      ----------------------------------------
+    [Rung 27]
+      
+EQU(State,40)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);
+
+      ----------------------------------------
+    [Rung 28]
+      /* ===== STATE 50: RUNNING ===== */
+      
+EQU(State,50)OTU(StsStarting)OTE(StsRunning)OTE(LO_PumpCmd)OTE(VFD_CmdStart)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(PID_Enable)OTE(PID_Auto)OTE(ASC_Enable)OTE(ASC_Auto);
+
+      ----------------------------------------
+    [Rung 29]
+      /* Speed from PID output */
+      
+EQU(State,50)MOV(PID_Out,Local:5:O.Ch1Data);
+
+      ----------------------------------------
+    [Rung 30]
+      /* Run Hours Accumulation */
+      
+EQU(State,50)ADD(RunHours,0.0000278,RunHours);
+
+      ----------------------------------------
+    [Rung 31]
+      /* Transition: RUNNING -> SHUTDOWN on Stop */
+      
+EQU(State,50)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);
+
+      ----------------------------------------
+    [Rung 32]
+      /* ===== STATE 60: NORMAL SHUTDOWN ===== */
+      
+EQU(State,60)OTU(StsRunning)OTE(StsStopping)OTU(PID_Enable)MOV(CFG_RecycleShutdown,Local:5:O.Ch0Data)OTE(LO_PumpCmd);
+
+      ----------------------------------------
+    [Rung 33]
+      /* Ramp Down VFD Speed */
+      
+EQU(State,60)GRT(Local:5:O.Ch1Data,CFG_SpeedMin)SUB(Local:5:O.Ch1Data,1.0,Local:5:O.Ch1Data);
+
+      ----------------------------------------
+    [Rung 34]
+      /* Stop VFD at Minimum Speed */
+      
+EQU(State,60)LEQ(Local:5:O.Ch1Data,CFG_SpeedMin)OTU(VFD_CmdStart)OTE(VFD_CmdStop);
+
+      ----------------------------------------
+    [Rung 35]
+      /* After VFD stops: Open blowdown, close isolation */
+      
+EQU(State,60)XIO(VFD_Running)OTE(BDV101_CmdOpen)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTU(XV101_CmdOpen)OTE(XV101_CmdClose);
+
+      ----------------------------------------
+    [Rung 36]
+      /* Post-Lube Timer */
+      
+EQU(State,60)XIO(VFD_Running)TON(TMR_PostLube,?,?);
+
+      ----------------------------------------
+    [Rung 37]
+      /* Transition: SHUTDOWN -> STOPPED */
+      
+EQU(State,60)XIO(VFD_Running)GRT(TMR_PostLube.ACC,CFG_PostLubeTime)OTU(LO_PumpCmd)MOV(0,State);
+
+      ----------------------------------------
+    [Rung 38]
+      /* ===== STATE 90: TRIPPED ===== */
+      
+EQU(State,90)OTU(StsRunning)OTU(StsStarting)OTU(StsStopping)OTE(StsTripped)MOV(100.0,Local:5:O.Ch0Data)OTU(VFD_CmdStart)OTE(VFD_CmdStop)MOV(0.0,Local:5:O.Ch1Data);
+
+      ----------------------------------------
+    [Rung 39]
+      
+EQU(State,90)OTE(BDV101_CmdOpen)OTU(XV101_CmdOpen)OTE(XV101_CmdClose)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTU(PID_Enable)OTU(ASC_Enable);
+
+      ----------------------------------------
+    [Rung 40]
+      /* Extended Post-Lube After Trip */
+      
+EQU(State,90)TON(TMR_PostLube,?,?);
+
+      ----------------------------------------
+    [Rung 41]
+      
+EQU(State,90)LES(TMR_PostLube.ACC,CFG_PostLubeTripTime)OTE(LO_PumpCmd);
+
+      ----------------------------------------
+    [Rung 42]
+      
+EQU(State,90)GEQ(TMR_PostLube.ACC,CFG_PostLubeTripTime)OTU(LO_PumpCmd);
+
+      ----------------------------------------
+    [Rung 43]
+      /* Transition: TRIPPED -> STOPPED on Reset */
+      
+EQU(State,90)XIC(CmdReset)XIO(TripActive)OTU(TripLatch)MOV(0,TripCode)MOV(0,State)OTU(CmdReset);
+
+      ----------------------------------------
+    [Rung 44]
+      /* ===== STATE 95: ESD ACTIVE ===== */
+      
+EQU(State,95)OTU(StsRunning)OTU(StsStarting)OTE(StsTripped)OTE(StsESD)OTU(VFD_CmdStart)OTE(VFD_CmdStop)MOV(0.0,Local:5:O.Ch1Data)OTU(LO_PumpCmd)OTU(FanCmd);
+
+      ----------------------------------------
+    [Rung 45]
+      
+EQU(State,95)OTU(XV101_CmdOpen)OTE(XV101_CmdClose)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTE(BDV101_CmdOpen)MOV(100.0,Local:5:O.Ch0Data)OTU(PID_Enable)OTU(ASC_Enable);
+
+      ----------------------------------------
+    [Rung 46]
+      /* Transition: ESD -> TRIPPED when ESD restored */
+      
+EQU(State,95)XIC(Local:2:I.Data.6)XIO(Trip_Fire)MOV(90,State)RES(TMR_PostLube);
+
+      ----------------------------------------
+    [Rung 47]
+      /* ===== CLEAR ONE-SHOT COMMANDS ===== */
+      
+OTU(CmdStart)OTU(CmdStop)OTU(HMI_Start)OTU(HMI_Stop)OTU(HMI_Reset);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R05_Devices (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========== DEVICE CONTROL ========== */
+      
+NOP();
+
+      ----------------------------------------
+    [Rung 1]
+      /* XV-101 Valve Travel Fault Detection */
+      
+[XIC(XV101_CmdOpen) XIO(XV101_Open) ,XIC(XV101_CmdClose) XIO(XV101_Closed) ]TON(TMR_XV101,?,?);
+
+      ----------------------------------------
+    [Rung 2]
+      
+GRT(TMR_XV101.ACC,CFG_ValveTimeout)OTE(XV101_Fault);
+
+      ----------------------------------------
+    [Rung 3]
+      /* XV-102 Valve Travel Fault Detection */
+      
+[XIC(XV102_CmdOpen) XIO(XV102_Open) ,XIC(XV102_CmdClose) XIO(XV102_Closed) ]TON(TMR_XV102,?,?);
+
+      ----------------------------------------
+    [Rung 4]
+      
+GRT(TMR_XV102.ACC,CFG_ValveTimeout)OTE(XV102_Fault);
+
+      ----------------------------------------
+    [Rung 5]
+      /* ===== COOLER FAN CONTROL ===== */
+      
+GRT(TT301_PV,CFG_FanOnTemp)OTL(FanCmd);
+
+      ----------------------------------------
+    [Rung 6]
+      
+LES(TT301_PV,CFG_FanOffTemp)OTU(FanCmd);
+
+      ----------------------------------------
+    [Rung 7]
+      /* Stop fan if not running or starting */
+      
+XIO(StsRunning)XIO(StsStarting)OTU(FanCmd);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R06_Control (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========== PID DISCHARGE PRESSURE CONTROL ==========
+================= SIMPLE PID SIMULATION =============== */
+      
+NOP();
+
+      ----------------------------------------
+    [Rung 1]
+      /* PID Setpoint from HMI */
+      
+MOV(HMI_SP_Press,PID_SP);
+
+      ----------------------------------------
+    [Rung 2]
+      /* PID Process Value */
+      
+MOV(PT102_PV,PID_PV);
+
+      ----------------------------------------
+    [Rung 3]
+      /* PID Error Calculation */
+      
+XIC(PID_Enable)XIO(PT102_Fault)SUB(PID_SP,PID_PV,PID_Err);
+
+      ----------------------------------------
+    [Rung 4]
+      /* PID Output = Kp*Err + Integral */
+      
+XIC(PID_Enable)XIC(PID_Auto)MUL(PID_Kp,PID_Err,PID_Out)MUL(PID_Ki,PID_Err,ASC_Flow)MUL(ASC_Flow,ScanTime,ASC_Flow)ADD(PID_Int,ASC_Flow,PID_Int)ADD(PID_Out,PID_Int,PID_Out);
+
+      ----------------------------------------
+    [Rung 5]
+      /* Clamp Output High */
+      
+GRT(PID_Out,CFG_SpeedMax)MOV(CFG_SpeedMax,PID_Out);
+
+      ----------------------------------------
+    [Rung 6]
+      /* Clamp Output Low */
+      
+LES(PID_Out,CFG_SpeedMin)MOV(CFG_SpeedMin,PID_Out);
+
+      ----------------------------------------
+    [Rung 7]
+      /* Anti-Windup: Clamp Integral */
+      
+GRT(PID_Int,50.0)MOV(50.0,PID_Int);
+
+      ----------------------------------------
+    [Rung 8]
+      
+LES(PID_Int,-50.0)MOV(-50.0,PID_Int);
+
+      ----------------------------------------
+    [Rung 9]
+      /* ========== ANTI-SURGE CONTROL ==========
+========== SIMPLE ASC SIMULATION ========= */
+      
+MOV(FT101_PV,ASC_Flow);
+
+      ----------------------------------------
+    [Rung 10]
+      /* Calculate Pressure Ratio */
+      
+GRT(PT101_PV,0.1)DIV(PT102_PV,PT101_PV,ASC_PressRatio);
+
+      ----------------------------------------
+    [Rung 11]
+      /* Simplified Surge Limit Calculation */
+      
+SUB(ASC_PressRatio,1.0,ASC_SurgeLimit)MUL(ASC_SurgeLimit,2000.0,ASC_SurgeLimit)ADD(ASC_SurgeLimit,1000.0,ASC_SurgeLimit);
+
+      ----------------------------------------
+    [Rung 12]
+      /* Surge Margin (%) */
+      
+GRT(ASC_SurgeLimit,0.0)SUB(ASC_Flow,ASC_SurgeLimit,ASC_SurgeMargin)DIV(ASC_SurgeMargin,ASC_SurgeLimit,ASC_SurgeMargin)MUL(ASC_SurgeMargin,100.0,ASC_SurgeMargin);
+
+      ----------------------------------------
+    [Rung 13]
+      /* Surge Index (0=safe, 100=surge) */
+      
+SUB(100.0,ASC_SurgeMargin,ASC_SurgeIndex);
+
+      ----------------------------------------
+    [Rung 14]
+      
+LES(ASC_SurgeIndex,0.0)MOV(0.0,ASC_SurgeIndex);
+
+      ----------------------------------------
+    [Rung 15]
+      
+GRT(ASC_SurgeIndex,100.0)MOV(100.0,ASC_SurgeIndex);
+
+      ----------------------------------------
+    [Rung 16]
+      /* Low Margin Alarm */
+      
+LES(ASC_SurgeMargin,CFG_SurgeMarginAlm)OTE(ASC_LowMarginAlm);
+
+      ----------------------------------------
+    [Rung 17]
+      /* Open Recycle When Margin Low */
+      
+XIC(ASC_Enable)XIC(ASC_Auto)LES(ASC_SurgeMargin,ASC_MarginSP)ADD(ASC_RecycleCmd,1.0,ASC_RecycleCmd);
+
+      ----------------------------------------
+    [Rung 18]
+      /* Close Recycle When Margin OK */
+      
+XIC(ASC_Enable)XIC(ASC_Auto)GEQ(ASC_SurgeMargin,ASC_MarginSP)SUB(ASC_RecycleCmd,0.1,ASC_RecycleCmd);
+
+      ----------------------------------------
+    [Rung 19]
+      /* Minimum Recycle While Running */
+      
+XIC(StsRunning)LES(ASC_RecycleCmd,CFG_RecycleMinRun)MOV(CFG_RecycleMinRun,ASC_RecycleCmd);
+
+      ----------------------------------------
+    [Rung 20]
+      
+GRT(ASC_RecycleCmd,100.0)MOV(100.0,ASC_RecycleCmd);
+
+      ----------------------------------------
+    [Rung 21]
+      
+LES(ASC_RecycleCmd,0.0)MOV(0.0,ASC_RecycleCmd);
+
+      ----------------------------------------
+    [Rung 22]
+      /* Output to Recycle Valve */
+      
+XIC(ASC_Enable)MOV(ASC_RecycleCmd,Local:5:O.Ch0Data);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R07_Alarms (RLL)
+    ============================================================
+    [Rung 0]
+      /* ========== ALARM PROCESSING ========== */
+      
+NOP();
+
+      ----------------------------------------
+    [Rung 1]
+      /* Combine All Alarms */
+      
+[XIC(StsTripped) ,XIC(StsESD) ,XIC(PT102_HH_Alm) ,XIC(TT102_HH_Alm) ,XIC(PT201_LL_Alm) ,XIC(ASC_LowMarginAlm) ,XIC(Alm_Gas) ,XIC(Alm_Fire) ,XIC(VFD_Faulted) ,XIC(LO_PumpFlt) ,XIC(XV101_Fault) ,XIC(XV102_Fault) ]OTE(AlmActive);
+
+      ----------------------------------------
+    [Rung 2]
+      /* Silence Horn Command */
+      
+XIC(HMI_SilenceHorn)OTL(AlmHornSil);
+
+      ----------------------------------------
+    [Rung 3]
+      /* Reset Silence When All Clear */
+      
+XIO(AlmActive)OTU(AlmHornSil);
+
+      ----------------------------------------
+
+    ============================================================
+    ROUTINE: R08_Outputs (RLL)
+    ============================================================
+    [Rung 0]
+      
+[XIC(StsTripped) ,XIC(StsESD) ]OTE(Local:3:O.Data.12);
+
+      ----------------------------------------
+    [Rung 1]
+      /* ===== ALARM OUTPUTS ===== */
+      
+XIC(AlmActive)XIO(AlmHornSil)OTE(Local:3:O.Data.13);
+
+      ----------------------------------------
+
+
+################################################################################

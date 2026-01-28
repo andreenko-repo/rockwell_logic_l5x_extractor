@@ -1,0 +1,21 @@
+Name: booster_compressor
+ProcessorType: 1756-L82E
+Description: 
+Use: Target
+MajorRev: 34
+MinorRev: 11
+ProjectCreationDate: Tue Jan 27 20:39:03 2026
+LastModifiedDate: Wed Jan 28 13:42:40 2026
+SFCExecutionControl: CurrentActive
+SFCRestartPosition: MostRecent
+SFCLastScan: DontScan
+ProjectSN: 16#0000_0000
+MatchProjectToController: false
+CanUseRPIFromProducer: false
+InhibitAutomaticFirmwareUpdate: 0
+PassThroughConfiguration: EnabledWithAppend
+DownloadProjectDocumentationAndExtendedProperties: true
+DownloadProjectCustomProperties: true
+ReportMinorOverflow: false
+AutoDiagsEnabled: true
+WebServerEnabled: false

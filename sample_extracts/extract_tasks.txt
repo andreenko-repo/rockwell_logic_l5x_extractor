@@ -1,0 +1,9 @@
+TASKS - Found 1
+================================================================================
+
+TASK: MainTask
+  Type: CONTINUOUS
+  Priority: 10
+  Watchdog: 500 ms
+  Scheduled Programs:
+    - MainProgram

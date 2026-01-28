@@ -1,0 +1,3268 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="34.00" TargetName="booster_compressor" TargetType="Controller" ContainsContext="false" Owner="PLC PRO" ExportDate="Wed Jan 28 13:45:49 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Target" Name="booster_compressor" ProcessorType="1756-L82E" MajorRev="34" MinorRev="11" ProjectCreationDate="Tue Jan 27 20:39:03 2026" LastModifiedDate="Wed Jan 28 13:42:40 2026" SFCExecutionControl="CurrentActive" SFCRestartPosition="MostRecent" SFCLastScan="DontScan" ProjectSN="16#0000_0000"
+ MatchProjectToController="false" CanUseRPIFromProducer="false" InhibitAutomaticFirmwareUpdate="0" PassThroughConfiguration="EnabledWithAppend" DownloadProjectDocumentationAndExtendedProperties="true" DownloadProjectCustomProperties="true" ReportMinorOverflow="false" AutoDiagsEnabled="true" WebServerEnabled="false">
+<RedundancyInfo Enabled="false" KeepTestEditsOnSwitchOver="false"/>
+<Security Code="0" ChangesToDetect="16#ffff_ffff_ffff_ffff"/>
+<SafetyInfo/>
+<DataTypes/>
+<Modules>
+<Module Name="Local" CatalogNumber="1756-L82E" Vendor="1" ProductType="14" ProductCode="165" Major="34" Minor="11" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="true"
+>
+<EKey State="Disabled"/>
+<Ports>
+<Port Id="1" Address="0" Type="ICP" Upstream="false">
+<Bus Size="10"/>
+</Port>
+<Port Id="2" Type="Ethernet" Upstream="false">
+<Bus/>
+</Port>
+</Ports>
+</Module>
+<Module Name="DI_Slot1" CatalogNumber="1756-IB16" Vendor="1" ProductType="7" ProductCode="11" Major="3" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="1" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="24" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[28,16,0,0,0,0,1,1,1,1,1,1,1,1,-1,-1]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DI:C:1">
+<DataValueMember Name="FilterOffOn_0_7" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_0_7" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_8_15" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_8_15" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_16_23" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_16_23" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_24_31" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_24_31" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="COSOnOffEn" DataType="DINT" Radix="Binary" Value="2#1111_1111_1111_1111_1111_1111_1111_1111"/>
+<DataValueMember Name="COSOffOnEn" DataType="DINT" Radix="Binary" Value="2#1111_1111_1111_1111_1111_1111_1111_1111"/>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="StandardInput" RPI="20000" Type="Input" EventID="0" ProgrammaticallySendEventTrigger="false">
+<InputTag ExternalAccess="Read/Write">
+<Comments>
+<Comment Operand=".DATA.0">
+<![CDATA[Local/Remote 1=Local; 0=Remote]]>
+</Comment>
+<Comment Operand=".DATA.1">
+<![CDATA[Start PB]]>
+</Comment>
+<Comment Operand=".DATA.2">
+<![CDATA[Stop PB]]>
+</Comment>
+<Comment Operand=".DATA.3">
+<![CDATA[Reset PB]]>
+</Comment>
+<Comment Operand=".DATA.4">
+<![CDATA[Bypass Key Switch]]>
+</Comment>
+<Comment Operand=".DATA.5">
+<![CDATA[Cooler Fan Running (from MCC)]]>
+</Comment>
+<Comment Operand=".DATA.6">
+<![CDATA[Cooler Fan Fault (fom MCC)]]>
+</Comment>
+<Comment Operand=".DATA.7">
+<![CDATA[VFD Ready (from MCC)]]>
+</Comment>
+<Comment Operand=".DATA.8">
+<![CDATA[VFD Running (from MCC)]]>
+</Comment>
+<Comment Operand=".DATA.9">
+<![CDATA[VFD Faulted (from MCC)]]>
+</Comment>
+<Comment Operand=".DATA.10">
+<![CDATA[VFD Communication Fault (from MCC)]]>
+</Comment>
+</Comments>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DI:I:0">
+<DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Data" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_1000_0000"/>
+</Structure>
+</Data>
+</InputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><ConfigID>111</ConfigID><CatNum>1756-IB16</CatNum></public>
+</ExtendedProperties>
+</Module>
+<Module Name="DI_Slot2" CatalogNumber="1756-IB16" Vendor="1" ProductType="7" ProductCode="11" Major="3" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="2" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="24" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[28,16,0,0,0,0,1,1,1,1,1,1,1,1,-1,-1]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DI:C:1">
+<DataValueMember Name="FilterOffOn_0_7" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_0_7" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_8_15" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_8_15" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_16_23" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_16_23" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOffOn_24_31" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="FilterOnOff_24_31" DataType="SINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="COSOnOffEn" DataType="DINT" Radix="Binary" Value="2#1111_1111_1111_1111_1111_1111_1111_1111"/>
+<DataValueMember Name="COSOffOnEn" DataType="DINT" Radix="Binary" Value="2#1111_1111_1111_1111_1111_1111_1111_1111"/>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="StandardInput" RPI="20000" Type="Input" EventID="0" ProgrammaticallySendEventTrigger="false">
+<InputTag ExternalAccess="Read/Write">
+<Comments>
+<Comment Operand=".DATA.0">
+<![CDATA[XV-101 Suction Valve Open]]>
+</Comment>
+<Comment Operand=".DATA.1">
+<![CDATA[XV-101 Suction Valve Closed]]>
+</Comment>
+<Comment Operand=".DATA.2">
+<![CDATA[XV-102 Suction Valve Open]]>
+</Comment>
+<Comment Operand=".DATA.3">
+<![CDATA[XV-102 Suction Valve Closed]]>
+</Comment>
+<Comment Operand=".DATA.4">
+<![CDATA[BDV-101 Blowdown Valve Open]]>
+</Comment>
+<Comment Operand=".DATA.5">
+<![CDATA[BDV-101 Blowdown Valve Closed]]>
+</Comment>
+<Comment Operand=".DATA.6">
+<![CDATA[ESD Loop (1=Healthy, 0=Trip)]]>
+</Comment>
+<Comment Operand=".DATA.7">
+<![CDATA[Gas Detector HH Alarm]]>
+</Comment>
+<Comment Operand=".DATA.8">
+<![CDATA[Gas Detector Fault]]>
+</Comment>
+<Comment Operand=".DATA.9">
+<![CDATA[Fire Detector Alarm]]>
+</Comment>
+<Comment Operand=".DATA.10">
+<![CDATA[Fire Detector Fault]]>
+</Comment>
+<Comment Operand=".DATA.11">
+<![CDATA[Compressor Vibration High]]>
+</Comment>
+<Comment Operand=".DATA.12">
+<![CDATA[Compressor Vibration Trip]]>
+</Comment>
+<Comment Operand=".DATA.13">
+<![CDATA[Lube Oil Pump Running]]>
+</Comment>
+<Comment Operand=".DATA.14">
+<![CDATA[Lube Oil Pump Fault/Trip]]>
+</Comment>
+<Comment Operand=".DATA.15">
+<![CDATA[Lube Oil Level Low-Low]]>
+</Comment>
+</Comments>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DI:I:0">
+<DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Data" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</InputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><ConfigID>111</ConfigID><CatNum>1756-IB16</CatNum></public>
+</ExtendedProperties>
+</Module>
+<Module Name="DO_Slot3" CatalogNumber="1756-OB16E" Vendor="1" ProductType="7" ProductCode="16" Major="3" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+ AutoDiagsEnabled="true">
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="3" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870914">
+<ConfigTag ConfigSize="24" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[28,18,0,0,0,0,0,0,0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DO:C:0">
+<DataValueMember Name="ProgToFaultEn" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="FaultValue" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="ProgMode" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="ProgValue" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="Fused" RPI="20000" Type="Output" EventID="0" ProgrammaticallySendEventTrigger="false">
+<InputTag ExternalAccess="Read/Write">
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DO_Fused:I:0">
+<DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<DataValueMember Name="Data" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+<ArrayMember Name="CSTTimestamp" DataType="DINT" Dimensions="2" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+</ArrayMember>
+<DataValueMember Name="FuseBlown" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</InputTag>
+<OutputTag ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_DO:O:0">
+<DataValueMember Name="Data" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
+</Structure>
+</Data>
+</OutputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>1756-OB16E</CatNum><ConfigID>701</ConfigID><ADDAVersion>1</ADDAVersion></public>
+</ExtendedProperties>
+</Module>
+<Module Name="AI_Slot4" CatalogNumber="1756-IF8" Vendor="1" ProductType="10" ProductCode="7" Major="1" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+ AutoDiagsEnabled="true">
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="4" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="196" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[200,36,1,2,100,[0,3,0,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002
+		,-1.00000000e+001,1.00000000e+001,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000
+		],[0,3,0,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002,-1.00000000e+001
+		,1.00000000e+001,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000],[0,3,0,0.00000000e+000
+		,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.50000000e+002,-1.00000000e+001,1.00000000e+001
+		,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000],[0,3,0,0.00000000e+000,0.00000000e+000
+		,2.00000000e+001,0.00000000e+000,2.00000000e+002,-1.00000000e+001,1.00000000e+001,-1.00000000e+001
+		,1.00000000e+001,0.00000000e+000,0.00000000e+000]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_IF4_Float:C:0">
+<DataValueMember Name="ModuleFilter" DataType="SINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="RealTimeSample" DataType="INT" Radix="Decimal" Value="100"/>
+<StructureMember Name="Ch0Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch1Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch2Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="150.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch3Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="200.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="Input" RPI="100000" Type="Input" EventID="0" ProgrammaticallySendEventTrigger="false" Unicast="false">
+<InputTag ExternalAccess="Read/Write">
+<EngineeringUnits>
+<EngineeringUnit Operand=".CH0DATA">
+<![CDATA[barg]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH1DATA">
+<![CDATA[C]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH2DATA">
+<![CDATA[barg]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH3DATA">
+<![CDATA[C]]>
+</EngineeringUnit>
+</EngineeringUnits>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_IF4_Float:I:0">
+<DataValueMember Name="ChannelFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="Ch0Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ModuleFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="AnalogGroupFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Calibrating" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch0CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch1CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch2CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch3CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch1Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch2Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch3Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="RollingTimestamp" DataType="INT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</InputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>1756-IF8</CatNum><ConfigID>225</ConfigID><ADDAVersion>1</ADDAVersion></public>
+</ExtendedProperties>
+</Module>
+<Module Name="AO_Slot5" CatalogNumber="1756-OF8" Vendor="1" ProductType="10" ProductCode="9" Major="1" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+ AutoDiagsEnabled="true">
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="5" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="356" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[360,34,0,0,0,[0,1,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+002,0.00000000e+000],[0,1,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000],[0,1,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+002
+		,0.00000000e+000],[0,1,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+002,0.00000000e+000],[0,1,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000],[0,1,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+002
+		,0.00000000e+000],[0,1,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000,1.00000000e+002,0.00000000e+000],[0,1,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002
+		,0.00000000e+000,1.00000000e+002,0.00000000e+000]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_OF8_Float:C:0">
+<DataValueMember Name="ProgToFaultEn" DataType="BOOL" Value="0"/>
+<StructureMember Name="Ch0Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch1Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch2Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch3Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch4Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch5Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch6Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch7Config" DataType="AB:1756_NIO_Struct:C:0">
+<DataValueMember Name="HoldForInit" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="LimitAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FaultMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProgMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToProg" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RampToFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="INT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="MaxRampRate" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="FaultValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="ProgValue" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LowLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighLimit" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="Float" RPI="12000" Type="Output" EventID="0" ProgrammaticallySendEventTrigger="false" Unicast="false">
+<InputTag ExternalAccess="Read/Write">
+<EngineeringUnits>
+<EngineeringUnit Operand=".CH0DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH1DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH2DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH3DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH4DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH5DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH6DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH7DATA">
+<![CDATA[%]]>
+</EngineeringUnit>
+</EngineeringUnits>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_OF8_Float:I:0">
+<DataValueMember Name="ChannelFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="Ch0Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ModuleFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="AnalogGroupFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Calibrating" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch0OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch1OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch2OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch3OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch4OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch4HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch5OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch5HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch6OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch6HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch7OpenWire" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7NotANumber" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7InHold" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7RampAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7LLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch7HLimitAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch1Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch2Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch3Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch4Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch5Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch6Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch7Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="RollingTimestamp" DataType="INT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</InputTag>
+<OutputTag ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_OF8_Float:O:0">
+<DataValueMember Name="Ch0Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch1Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch2Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch3Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch4Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch5Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch6Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch7Data" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Data>
+</OutputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>1756-OF8</CatNum><ConfigID>303</ConfigID><ADDAVersion>1</ADDAVersion></public>
+</ExtendedProperties>
+</Module>
+<Module Name="AI_Slot6" CatalogNumber="1756-IF8" Vendor="1" ProductType="10" ProductCode="7" Major="1" Minor="1" ParentModule="Local" ParentModPortId="1" Inhibited="false" MajorFault="false"
+ AutoDiagsEnabled="true">
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="6" Type="ICP" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigTag ConfigSize="196" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[200,36,1,2,100,[0,3,0,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+004
+		,-1.00000000e+001,1.00000000e+001,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000
+		],[0,3,0,0.00000000e+000,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+001,-1.00000000e+001
+		,1.00000000e+001,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000],[0,3,0,0.00000000e+000
+		,0.00000000e+000,2.00000000e+001,0.00000000e+000,1.00000000e+002,-1.00000000e+001,1.00000000e+001
+		,-1.00000000e+001,1.00000000e+001,0.00000000e+000,0.00000000e+000],[0,3,0,0.00000000e+000,0.00000000e+000
+		,2.00000000e+001,0.00000000e+000,1.00000000e+002,-1.00000000e+001,1.00000000e+001,-1.00000000e+001
+		,1.00000000e+001,0.00000000e+000,0.00000000e+000]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_IF4_Float:C:0">
+<DataValueMember Name="ModuleFilter" DataType="SINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="RealTimeSample" DataType="INT" Radix="Decimal" Value="100"/>
+<StructureMember Name="Ch0Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="10000.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch1Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch2Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+<StructureMember Name="Ch3Config" DataType="AB:1756_NII_Struct:C:0">
+<DataValueMember Name="AlarmDisable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ProcessAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RateAlarmLatch" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RangeType" DataType="SINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="DigitalFilter" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RateAlarmLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="LowSignal" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighSignal" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="LowEngineering" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HighEngineering" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="LAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="LLAlarmLimit" DataType="REAL" Radix="Float" Value="-10.0"/>
+<DataValueMember Name="HHAlarmLimit" DataType="REAL" Radix="Float" Value="10.0"/>
+<DataValueMember Name="AlarmDeadband" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="CalBias" DataType="REAL" Radix="Float" Value="0.0"/>
+</StructureMember>
+</Structure>
+</Data>
+</ConfigTag>
+<Connections>
+<Connection Name="Input" RPI="100000" Type="Input" EventID="0" ProgrammaticallySendEventTrigger="false" Unicast="false">
+<InputTag ExternalAccess="Read/Write">
+<EngineeringUnits>
+<EngineeringUnit Operand=".CH0DATA">
+<![CDATA[m3/h]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH1DATA">
+<![CDATA[barg]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH2DATA">
+<![CDATA[C]]>
+</EngineeringUnit>
+<EngineeringUnit Operand=".CH3DATA">
+<![CDATA[C]]>
+</EngineeringUnit>
+</EngineeringUnits>
+<Data Format="Decorated">
+<Structure DataType="AB:1756_IF4_Float:I:0">
+<DataValueMember Name="ChannelFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="Ch0Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Fault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ModuleFaults" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="AnalogGroupFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Calibrating" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch0CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch1CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch1HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch2CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch2HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Status" DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+<DataValueMember Name="Ch3CalFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Underrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3Overrange" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3RateAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3LAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3HAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3LLAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch3HHAlarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Ch0Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch1Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch2Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Ch3Data" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="RollingTimestamp" DataType="INT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</InputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>1756-IF8</CatNum><ConfigID>225</ConfigID><ADDAVersion>1</ADDAVersion></public>
+</ExtendedProperties>
+</Module>
+</Modules>
+<AddOnInstructionDefinitions/>
+<Tags>
+<Tag Name="AlmActive" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.14" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Alarm Active]]>
+</Description>
+</Tag>
+<Tag Name="AlmHornSil" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Alm_Fire" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.9" ExternalAccess="Read/Write"/>
+<Tag Name="Alm_Gas" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.7" ExternalAccess="Read/Write"/>
+<Tag Name="Alm_Vib" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.11" ExternalAccess="Read/Write"/>
+<Tag Name="ASC_Auto" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control to Aut]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_Enable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Enable]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_Flow" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Flow]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_Ki" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Ki]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="1.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_Kp" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Kp]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[5.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="5.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_LowMarginAlm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Low Margine Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_MarginSP" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Magin SP]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.50000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="15.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_PressRatio" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Pressure Ratio]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_RecycleCmd" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Recycle Cmd]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_SurgeIndex" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Surge Index]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_SurgeLimit" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Surge Limit]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ASC_SurgeMargin" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Anti Surge Control Surge Margin]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="BDV101_Closed" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.5" ExternalAccess="Read/Write"/>
+<Tag Name="BDV101_CmdOpen" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Open Cmd BDV-101 Blowdown Vavle]]>
+</Description>
+</Tag>
+<Tag Name="BDV101_Open" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.4" ExternalAccess="Read/Write"/>
+<Tag Name="CFG_FanOffTemp" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cooler Fan Off Temp (C)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[3.50000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="35.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_FanOnTemp" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cooler Fan On Temp (C)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[4.50000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="45.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_LO_Press_Min" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Min Lube Oil Pressure (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="2.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PostLubeTime" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Post-Lube Time Normal (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[120000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="120000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PostLubeTripTime" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Post-Lube Time After Trip (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[300000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="300000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PrelubeTime" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Prelube Time Required (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[5000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="5000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PrelubeTimeout" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Prelube Timeout (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[60000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="60000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PT102_H" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Press High Alarm (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+002]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="100.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PT102_HH" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Press HH Trip (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.20000000e+002]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="120.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PT201_L" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Lube Oil Press Low Alarm (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="2.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_PT201_LL" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Lube Oil Press LL Trip (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="1.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_RecycleMinRun" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Min Recycle While Running (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="10.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_RecycleShutdown" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Recycle for Shutdown (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[5.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="50.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_SpeedMax" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD Max Speed (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+002]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="100.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_SpeedMin" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD Min Speed (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[3.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="30.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_SpeedStart" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD Start Speed (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[3.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="30.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_SurgeMarginAlm" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Surge Margin Alarm (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.50000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="15.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_SurgeMarginTrip" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Surge Margin Trip (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="10.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_TripDelay" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Process Trip Delay (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_TT102_H" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Temp High Alarm (C)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.60000000e+002]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="160.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_TT102_HH" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Temp HH Trip (C)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1.80000000e+002]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="180.0"/>
+</Data>
+</Tag>
+<Tag Name="CFG_ValveTimeout" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Valve Travel Timeout (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[30000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="30000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_VFDStartTimeout" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD Start Timeout (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[10000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="10000"/>
+</Data>
+</Tag>
+<Tag Name="CFG_WarmupTime" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Warmup Time (ms)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[60000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="60000"/>
+</Data>
+</Tag>
+<Tag Name="CmdReset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="CmdStart" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="CmdStop" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="CV101_Cmd" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[CV-101 Recycle Valve Command (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="FanCmd" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fan Cmd (1=Start,0=Stop)]]>
+</Description>
+</Tag>
+<Tag Name="FanFlt" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.6" ExternalAccess="Read/Write"/>
+<Tag Name="FanRun" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.5" ExternalAccess="Read/Write"/>
+<Tag Name="FT101_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:6:I.Ch0Fault" ExternalAccess="Read/Write"/>
+<Tag Name="FT101_PV" TagType="Alias" Radix="Float" AliasFor="Local:6:I.Ch0Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[FT-101 Compressor Flow (m3/h)]]>
+</Description>
+</Tag>
+<Tag Name="HMI_Reset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Reset Cmd from HMI]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_SilenceHorn" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Silence Horn Cmd from HMI]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_SP_Press" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[8.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="80.0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Start" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Start Cmd from HMI]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_Stop" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Stop Cmd from HMI]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="LO_PressOK" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LO Pressure OK]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="LO_PumpCmd" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[LO Pump Cmd - Start]]>
+</Description>
+</Tag>
+<Tag Name="LO_PumpFlt" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.14" ExternalAccess="Read/Write"/>
+<Tag Name="LO_PumpRun" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.13" ExternalAccess="Read/Write"/>
+<Tag Name="ModeLocal" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Local Mode]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ModeRemote" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Remote Mode]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ONS_Reset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ONS_Start" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="ONS_Trip" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PermOK" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Perm_BDV" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Permissive BDV-101 Blowdown Valve]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Perm_ESD" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.6" ExternalAccess="Read/Write"/>
+<Tag Name="Perm_Instr" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Perm_LO_Lvl" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.15" ExternalAccess="Read/Write"/>
+<Tag Name="Perm_NoTrip" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Perm_VFD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Auto" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Mode - Auto]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Enable" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Enable Cmd]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Err" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Error]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Int" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Interlock]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Ki" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Ki]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[5.00000000e-001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.5"/>
+</Data>
+</Tag>
+<Tag Name="PID_Kp" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Kp]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[2.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="2.0"/>
+</Data>
+</Tag>
+<Tag Name="PID_Out" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID CV]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="PID_PV" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID PV]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="PID_SP" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PID Discharge Press SP (barg)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[8.00000000e+001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="80.0"/>
+</Data>
+</Tag>
+<Tag Name="PT101_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:4:I.Ch0Fault" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-101 Suction Pressure Fault]]>
+</Description>
+</Tag>
+<Tag Name="PT101_PV" TagType="Alias" Radix="Float" AliasFor="Local:4:I.Ch0Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-101 Suction Pressure (barg)]]>
+</Description>
+</Tag>
+<Tag Name="PT102_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:4:I.Ch2Fault" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-102 Discharge Pressure Fault]]>
+</Description>
+</Tag>
+<Tag Name="PT102_HH_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-102 Discharge Pressure High-High Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PT102_H_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-102 Discharge Pressure High Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PT102_PV" TagType="Alias" Radix="Float" AliasFor="Local:4:I.Ch2Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-102 Discharge Pressure (barg)]]>
+</Description>
+</Tag>
+<Tag Name="PT201_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:6:I.Ch1Fault" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-201 Lube Oil Pressure Fault]]>
+</Description>
+</Tag>
+<Tag Name="PT201_LL_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-201 Lube Oil Pressure Low-Low Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PT201_L_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-201 Lube Oil Pressure Low Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="PT201_PV" TagType="Alias" Radix="Float" AliasFor="Local:6:I.Ch1Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[PT-201 Lube Oil Pressure (barg)]]>
+</Description>
+</Tag>
+<Tag Name="RunHours" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="ScanTime" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[1.00000000e-001]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.1"/>
+</Data>
+</Tag>
+<Tag Name="StartCount" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="State" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[State: 0=Stop 10=Prelube 20=Valves 30=VFDStart 40=Warmup 50=Run 60=Stop 90=Trip 95=ESD]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="StsESD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[ESD Status (1=ESD, 0=Healthy)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="StsReady" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.10" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Ready]]>
+</Description>
+</Tag>
+<Tag Name="StsRunning" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.11" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Running]]>
+</Description>
+</Tag>
+<Tag Name="StsStarting" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Starting]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="StsStopped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Stopped]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="StsStopping" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Stopping]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="StsTripped" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Compressor Tripped]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TMR_PostLube" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,400000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="400000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Prelube" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,100000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Trip_DischP" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,5000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="5000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Trip_DischT" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,5000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="5000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Trip_LO" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,5000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="5000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Valve" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,100000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_VFDStart" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,60000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="60000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_Warmup" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,100000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_XV101" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,100000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TMR_XV102" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,100000,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="TripActive" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trip Active]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TripCode" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[1=ESD 2=Fire 3=Vib 4=VFD 5=LO_P 6=DischT 7=DischP 8=Surge 9=Comms]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TripCount" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TripLatch" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_Comms" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trip VFD Communication Fault]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_DischP" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Pressure Trip]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_DischT" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Discharge Temperatue Trip]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_ESD" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.6" ExternalAccess="Read/Write"/>
+<Tag Name="Trip_Fire" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fire Alarm Trip]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_LO_P" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Lube Oil Trip]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_Surge" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Surge Trip]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_VFD" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trip VFD Fault]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="Trip_Vib" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.12" ExternalAccess="Read/Write"/>
+<Tag Name="TT101_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:4:I.Ch1Fault" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-101 Suction Temperature Fault]]>
+</Description>
+</Tag>
+<Tag Name="TT101_PV" TagType="Alias" Radix="Float" AliasFor="Local:4:I.Ch1Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-101 Suction Temperature (C)]]>
+</Description>
+</Tag>
+<Tag Name="TT102_Fault" TagType="Alias" Radix="Decimal" AliasFor="Local:4:I.Ch3Fault" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-102 Discharge Temperature Fault]]>
+</Description>
+</Tag>
+<Tag Name="TT102_HH_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-102 Discharge Temperature HH Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TT102_H_Alm" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-102 Discharge Temperature High Alarm]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="TT102_PV" TagType="Alias" Radix="Float" AliasFor="Local:4:I.Ch3Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-102 Discharge Temperature (C)]]>
+</Description>
+</Tag>
+<Tag Name="TT201_PV" TagType="Alias" Radix="Float" AliasFor="Local:6:I.Ch2Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-201 Lube Oil Temperature (C)]]>
+</Description>
+</Tag>
+<Tag Name="TT301_PV" TagType="Alias" Radix="Float" AliasFor="Local:6:I.Ch3Data" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[TT-301 Cooler Outlet Temp (C)]]>
+</Description>
+</Tag>
+<Tag Name="ValvesOpen" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Both Suction Valves Open]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="VFD_CmdReset" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.9" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cmd to VFD - Reset]]>
+</Description>
+</Tag>
+<Tag Name="VFD_CmdStart" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cmd to VFD - Start]]>
+</Description>
+</Tag>
+<Tag Name="VFD_CmdStop" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.8" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Cmd to VFD - Stop]]>
+</Description>
+</Tag>
+<Tag Name="VFD_CommFlt" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.10" ExternalAccess="Read/Write"/>
+<Tag Name="VFD_Faulted" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.9" ExternalAccess="Read/Write"/>
+<Tag Name="VFD_Ready" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.7" ExternalAccess="Read/Write"/>
+<Tag Name="VFD_Running" TagType="Alias" Radix="Decimal" AliasFor="Local:1:I.Data.8" ExternalAccess="Read/Write"/>
+<Tag Name="VFD_SpeedCmd" TagType="Base" DataType="REAL" Radix="Float" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD Speed Command (%)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</Data>
+</Tag>
+<Tag Name="XV101_Closed" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.1" ExternalAccess="Read/Write"/>
+<Tag Name="XV101_CmdClose" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Close Cmd to XV101 Suction Vavle]]>
+</Description>
+</Tag>
+<Tag Name="XV101_CmdOpen" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Open Cmd - XV101 Suction Vavle]]>
+</Description>
+</Tag>
+<Tag Name="XV101_Fault" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fault XV101 Suction Vavle]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="XV101_Open" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.0" ExternalAccess="Read/Write"/>
+<Tag Name="XV102_Closed" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.3" ExternalAccess="Read/Write"/>
+<Tag Name="XV102_CmdClose" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Close Cmd to XV102 Suction Vavle]]>
+</Description>
+</Tag>
+<Tag Name="XV102_CmdOpen" TagType="Alias" Radix="Decimal" AliasFor="Local:3:O.Data.2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Open Cmd to XV102 Suction Vavle]]>
+</Description>
+</Tag>
+<Tag Name="XV102_Fault" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Fault XV101 Suction Vavle]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="XV102_Open" TagType="Alias" Radix="Decimal" AliasFor="Local:2:I.Data.2" ExternalAccess="Read/Write"/>
+</Tags>
+<Programs>
+<Program Name="MainProgram" TestEdits="false" MainRoutineName="MainRoutine" Disabled="false" UseAsFolder="false">
+<Tags/>
+<Routines>
+<Routine Name="MainRoutine" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========================================================================
+BOOSTER GAS COMPRESSOR STATION - PRODUCTION PROGRAM
+Controller: 1756-L82E
+I/O: Slot1=DI(16pt) Slot2=DI(16pt) Slot3=DO(16pt) Slot4=AI(4ch) Slot5=AO(8ch)
+========================================================================]]>
+</Comment>
+<Text>
+<![CDATA[JSR(R00_AnalogAlarms,0);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[JSR(R01_Inputs,0);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[JSR(R02_Permissives,0);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[JSR(R03_Trips,0);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[JSR(R04_Sequence,0);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[JSR(R05_Devices,0);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[JSR(R06_Control,0);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[JSR(R07_Alarms,0);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[JSR(R08_Outputs,0);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R00_AnalogAlarms" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[PT-102 Alarms]]>
+</Comment>
+<Text>
+<![CDATA[GRT(PT102_PV,CFG_PT102_HH)OTE(PT102_HH_Alm);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[GRT(PT102_PV,CFG_PT102_H)OTE(PT102_H_Alm);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[TT-102 Alarms]]>
+</Comment>
+<Text>
+<![CDATA[GRT(TT102_PV,CFG_TT102_HH)OTE(TT102_HH_Alm);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[GRT(TT102_PV,CFG_TT102_H)OTE(TT102_H_Alm);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[PT-201 Lube Oil Pressure Alarms]]>
+</Comment>
+<Text>
+<![CDATA[LES(PT201_PV,CFG_PT201_LL)OTE(PT201_LL_Alm);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[LES(PT201_PV,CFG_PT201_L)OTE(PT201_L_Alm);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R01_Inputs" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Mode Selection]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Local:1:I.Data.0)OTE(ModeLocal);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[XIO(Local:1:I.Data.0)OTE(ModeRemote);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Both Isolation Valves Open]]>
+</Comment>
+<Text>
+<![CDATA[XIC(XV101_Open)XIC(XV102_Open)OTE(ValvesOpen);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R02_Permissives" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[No Active Trip Latched]]>
+</Comment>
+<Text>
+<![CDATA[XIO(TripLatch)OTE(Perm_NoTrip);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[VFD Ready and Not Faulted]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VFD_Ready)XIO(VFD_Faulted)XIO(VFD_CommFlt)OTE(Perm_VFD);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Blowdown Valve Closed]]>
+</Comment>
+<Text>
+<![CDATA[XIC(BDV101_Closed)OTE(Perm_BDV);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Critical Instruments Healthy]]>
+</Comment>
+<Text>
+<![CDATA[XIO(PT101_Fault)XIO(PT102_Fault)XIO(TT102_Fault)OTE(Perm_Instr);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[Combine All Permissives]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Perm_ESD)XIC(Perm_NoTrip)XIO(Perm_LO_Lvl)XIC(Perm_VFD)XIC(Perm_BDV)XIC(Perm_Instr)OTE(PermOK);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[Ready Status]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PermOK)XIC(StsStopped)OTE(StsReady);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R03_Trips" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========== TRIP PROCESSING ==========]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[Fire Alarm]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Alm_Fire)OTE(Trip_Fire);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[VFD Fault while running]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VFD_Faulted)XIC(StsRunning)OTE(Trip_VFD);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[VFD Comms Fault while running]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VFD_CommFlt)XIC(StsRunning)OTE(Trip_Comms);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[===== DELAYED TRIPS (2 sec filter) =====
+Lube Oil Pressure Low-Low]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Local:2:I.Data.15) ,XIC(PT201_LL_Alm) ]XIC(StsRunning)TON(TMR_Trip_LO,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[GRT(TMR_Trip_LO.ACC,CFG_TripDelay)OTE(Trip_LO_P);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[Discharge Temperature HH]]>
+</Comment>
+<Text>
+<![CDATA[XIC(TT102_HH_Alm)XIC(StsRunning)TON(TMR_Trip_DischT,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[GRT(TMR_Trip_DischT.ACC,CFG_TripDelay)OTE(Trip_DischT);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[Discharge Pressure HH]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PT102_HH_Alm)XIC(StsRunning)TON(TMR_Trip_DischP,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[GRT(TMR_Trip_DischP.ACC,CFG_TripDelay)OTE(Trip_DischP);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[Surge Trip (low margin)]]>
+</Comment>
+<Text>
+<![CDATA[LES(ASC_SurgeMargin,CFG_SurgeMarginTrip)XIC(StsRunning)OTE(Trip_Surge);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[===== COMBINE ALL TRIPS =====]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(Trip_ESD) ,XIC(Trip_Fire) ,XIC(Trip_Vib) ,XIC(Trip_VFD) ,XIC(Trip_Comms) ,XIC(Trip_LO_P) ,XIC(Trip_DischT) ,XIC(Trip_DischP) ,XIC(Trip_Surge) ]OTE(TripActive);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[Latch Trip]]>
+</Comment>
+<Text>
+<![CDATA[XIC(TripActive)OTL(TripLatch);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[Reset Trip (when condition cleared)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(CmdReset)XIO(TripActive)OTU(TripLatch);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[===== FIRST-OUT TRIP CODE CAPTURE =====]]>
+</Comment>
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIO(Trip_ESD)MOV(1,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_Fire)MOV(2,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_Vib)MOV(3,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_VFD)MOV(4,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_LO_P)MOV(5,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_DischT)MOV(6,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_DischP)MOV(7,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_Surge)MOV(8,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Text>
+<![CDATA[XIC(TripActive)EQU(TripCode,0)XIC(Trip_Comms)MOV(9,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Comment>
+<![CDATA[Clear trip code when reset]]>
+</Comment>
+<Text>
+<![CDATA[XIO(TripLatch)MOV(0,TripCode);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Comment>
+<![CDATA[Trip Counter]]>
+</Comment>
+<Text>
+<![CDATA[ONS(TripActive)ADD(TripCount,1,TripCount);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R04_Sequence" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========== SEQUENCE STATE MACHINE ==========
+State: 0=Stopped 10=Prelube 20=OpenValves 30=StartVFD 40=Warmup 50=Running 60=Shutdown 90=Tripped 95=ESD]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[===== COMMAND PROCESSING =====
+Start Command from Local PB or HMI]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Local:1:I.Data.1) XIC(ModeLocal) ,XIC(HMI_Start) XIC(ModeRemote) ]XIO(ONS_Start)OTL(CmdStart)OTE(ONS_Start);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Stop Command (Local PB always works)]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Local:1:I.Data.2) ,XIC(HMI_Stop) ]OTL(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Reset Command]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Local:1:I.Data.3) XIC(ModeLocal) ,XIC(HMI_Reset) XIC(ModeRemote) ]XIO(ONS_Reset)OTL(CmdReset)OTE(ONS_Reset);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[===== ESD/FIRE - HIGHEST PRIORITY =====]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(Trip_ESD) ,XIC(Trip_Fire) ]MOV(95,State);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[===== TRIP PRIORITY =====]]>
+</Comment>
+<Text>
+<![CDATA[XIC(TripActive)NEQ(State,0)NEQ(State,90)NEQ(State,95)MOV(90,State);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[===== STATE 0: STOPPED =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,0)OTE(StsStopped)OTU(StsStarting)OTU(StsRunning)OTU(StsStopping)OTU(StsTripped)OTU(StsESD)OTU(VFD_CmdStart)OTU(LO_PumpCmd)OTU(LO_PressOK);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[Transition: STOPPED -> PRELUBE on Start]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,0)XIC(CmdStart)XIC(PermOK)MOV(10,State)ADD(StartCount,1,StartCount)RES(TMR_Prelube)OTU(CmdStart);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[===== STATE 10: PRELUBE =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,10)OTU(StsStopped)OTE(StsStarting)OTE(LO_PumpCmd)TON(TMR_Prelube,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[Check Lube Oil Pressure OK]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,10)GEQ(PT201_PV,CFG_LO_Press_Min)OTE(LO_PressOK);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[Transition: PRELUBE -> OPEN_VALVES]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,10)XIC(LO_PressOK)GRT(TMR_Prelube.ACC,CFG_PrelubeTime)MOV(20,State)RES(TMR_Valve);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[Timeout: PRELUBE -> TRIPPED (failed to build pressure)]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,10)GRT(TMR_Prelube.ACC,CFG_PrelubeTimeout)OTL(TripLatch)MOV(5,TripCode)MOV(90,State);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[Abort: PRELUBE -> SHUTDOWN on Stop]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,10)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[===== STATE 20: OPEN VALVES =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,20)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTU(XV101_CmdClose)OTU(BDV101_CmdOpen);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[EQU(State,20)TON(TMR_Valve,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[Open discharge valve after suction opens]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,20)XIC(XV101_Open)OTE(XV102_CmdOpen)OTU(XV102_CmdClose);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[Transition: OPEN_VALVES -> START_VFD]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,20)XIC(ValvesOpen)MOV(30,State)RES(TMR_VFDStart);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[Timeout: OPEN_VALVES -> TRIPPED]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,20)GRT(TMR_Valve.ACC,CFG_ValveTimeout)OTL(TripLatch)MOV(90,State);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[EQU(State,20)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Comment>
+<![CDATA[===== STATE 30: START VFD =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,30)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(VFD_CmdStart)MOV(CFG_SpeedStart,Local:5:O.Ch1Data);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[EQU(State,30)TON(TMR_VFDStart,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Comment>
+<![CDATA[Transition: START_VFD -> WARMUP]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,30)XIC(VFD_Running)MOV(40,State)RES(TMR_Warmup);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Comment>
+<![CDATA[Timeout: START_VFD -> TRIPPED]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,30)GRT(TMR_VFDStart.ACC,CFG_VFDStartTimeout)OTL(TripLatch)MOV(4,TripCode)MOV(90,State);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[EQU(State,30)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Comment>
+<![CDATA[===== STATE 40: WARMUP =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,40)OTE(StsStarting)OTE(LO_PumpCmd)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(VFD_CmdStart)OTE(ASC_Enable);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Text>
+<![CDATA[EQU(State,40)TON(TMR_Warmup,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Comment>
+<![CDATA[Transition: WARMUP -> RUNNING]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,40)GRT(TMR_Warmup.ACC,CFG_WarmupTime)MOV(50,State);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
+<Text>
+<![CDATA[EQU(State,40)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Comment>
+<![CDATA[===== STATE 50: RUNNING =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,50)OTU(StsStarting)OTE(StsRunning)OTE(LO_PumpCmd)OTE(VFD_CmdStart)OTE(XV101_CmdOpen)OTE(XV102_CmdOpen)OTE(PID_Enable)OTE(PID_Auto)OTE(ASC_Enable)OTE(ASC_Auto);]]>
+</Text>
+</Rung>
+<Rung Number="29" Type="N">
+<Comment>
+<![CDATA[Speed from PID output]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,50)MOV(PID_Out,Local:5:O.Ch1Data);]]>
+</Text>
+</Rung>
+<Rung Number="30" Type="N">
+<Comment>
+<![CDATA[Run Hours Accumulation]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,50)ADD(RunHours,0.0000278,RunHours);]]>
+</Text>
+</Rung>
+<Rung Number="31" Type="N">
+<Comment>
+<![CDATA[Transition: RUNNING -> SHUTDOWN on Stop]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,50)XIC(CmdStop)MOV(60,State)RES(TMR_PostLube)OTU(CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="32" Type="N">
+<Comment>
+<![CDATA[===== STATE 60: NORMAL SHUTDOWN =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)OTU(StsRunning)OTE(StsStopping)OTU(PID_Enable)MOV(CFG_RecycleShutdown,Local:5:O.Ch0Data)OTE(LO_PumpCmd);]]>
+</Text>
+</Rung>
+<Rung Number="33" Type="N">
+<Comment>
+<![CDATA[Ramp Down VFD Speed]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)GRT(Local:5:O.Ch1Data,CFG_SpeedMin)SUB(Local:5:O.Ch1Data,1.0,Local:5:O.Ch1Data);]]>
+</Text>
+</Rung>
+<Rung Number="34" Type="N">
+<Comment>
+<![CDATA[Stop VFD at Minimum Speed]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)LEQ(Local:5:O.Ch1Data,CFG_SpeedMin)OTU(VFD_CmdStart)OTE(VFD_CmdStop);]]>
+</Text>
+</Rung>
+<Rung Number="35" Type="N">
+<Comment>
+<![CDATA[After VFD stops: Open blowdown, close isolation]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)XIO(VFD_Running)OTE(BDV101_CmdOpen)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTU(XV101_CmdOpen)OTE(XV101_CmdClose);]]>
+</Text>
+</Rung>
+<Rung Number="36" Type="N">
+<Comment>
+<![CDATA[Post-Lube Timer]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)XIO(VFD_Running)TON(TMR_PostLube,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="37" Type="N">
+<Comment>
+<![CDATA[Transition: SHUTDOWN -> STOPPED]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,60)XIO(VFD_Running)GRT(TMR_PostLube.ACC,CFG_PostLubeTime)OTU(LO_PumpCmd)MOV(0,State);]]>
+</Text>
+</Rung>
+<Rung Number="38" Type="N">
+<Comment>
+<![CDATA[===== STATE 90: TRIPPED =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,90)OTU(StsRunning)OTU(StsStarting)OTU(StsStopping)OTE(StsTripped)MOV(100.0,Local:5:O.Ch0Data)OTU(VFD_CmdStart)OTE(VFD_CmdStop)MOV(0.0,Local:5:O.Ch1Data);]]>
+</Text>
+</Rung>
+<Rung Number="39" Type="N">
+<Text>
+<![CDATA[EQU(State,90)OTE(BDV101_CmdOpen)OTU(XV101_CmdOpen)OTE(XV101_CmdClose)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTU(PID_Enable)OTU(ASC_Enable);]]>
+</Text>
+</Rung>
+<Rung Number="40" Type="N">
+<Comment>
+<![CDATA[Extended Post-Lube After Trip]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,90)TON(TMR_PostLube,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="41" Type="N">
+<Text>
+<![CDATA[EQU(State,90)LES(TMR_PostLube.ACC,CFG_PostLubeTripTime)OTE(LO_PumpCmd);]]>
+</Text>
+</Rung>
+<Rung Number="42" Type="N">
+<Text>
+<![CDATA[EQU(State,90)GEQ(TMR_PostLube.ACC,CFG_PostLubeTripTime)OTU(LO_PumpCmd);]]>
+</Text>
+</Rung>
+<Rung Number="43" Type="N">
+<Comment>
+<![CDATA[Transition: TRIPPED -> STOPPED on Reset]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,90)XIC(CmdReset)XIO(TripActive)OTU(TripLatch)MOV(0,TripCode)MOV(0,State)OTU(CmdReset);]]>
+</Text>
+</Rung>
+<Rung Number="44" Type="N">
+<Comment>
+<![CDATA[===== STATE 95: ESD ACTIVE =====]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,95)OTU(StsRunning)OTU(StsStarting)OTE(StsTripped)OTE(StsESD)OTU(VFD_CmdStart)OTE(VFD_CmdStop)MOV(0.0,Local:5:O.Ch1Data)OTU(LO_PumpCmd)OTU(FanCmd);]]>
+</Text>
+</Rung>
+<Rung Number="45" Type="N">
+<Text>
+<![CDATA[EQU(State,95)OTU(XV101_CmdOpen)OTE(XV101_CmdClose)OTU(XV102_CmdOpen)OTE(XV102_CmdClose)OTE(BDV101_CmdOpen)MOV(100.0,Local:5:O.Ch0Data)OTU(PID_Enable)OTU(ASC_Enable);]]>
+</Text>
+</Rung>
+<Rung Number="46" Type="N">
+<Comment>
+<![CDATA[Transition: ESD -> TRIPPED when ESD restored]]>
+</Comment>
+<Text>
+<![CDATA[EQU(State,95)XIC(Local:2:I.Data.6)XIO(Trip_Fire)MOV(90,State)RES(TMR_PostLube);]]>
+</Text>
+</Rung>
+<Rung Number="47" Type="N">
+<Comment>
+<![CDATA[===== CLEAR ONE-SHOT COMMANDS =====]]>
+</Comment>
+<Text>
+<![CDATA[OTU(CmdStart)OTU(CmdStop)OTU(HMI_Start)OTU(HMI_Stop)OTU(HMI_Reset);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R05_Devices" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========== DEVICE CONTROL ==========]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[XV-101 Valve Travel Fault Detection]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(XV101_CmdOpen) XIO(XV101_Open) ,XIC(XV101_CmdClose) XIO(XV101_Closed) ]TON(TMR_XV101,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[GRT(TMR_XV101.ACC,CFG_ValveTimeout)OTE(XV101_Fault);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[XV-102 Valve Travel Fault Detection]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(XV102_CmdOpen) XIO(XV102_Open) ,XIC(XV102_CmdClose) XIO(XV102_Closed) ]TON(TMR_XV102,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[GRT(TMR_XV102.ACC,CFG_ValveTimeout)OTE(XV102_Fault);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[===== COOLER FAN CONTROL =====]]>
+</Comment>
+<Text>
+<![CDATA[GRT(TT301_PV,CFG_FanOnTemp)OTL(FanCmd);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[LES(TT301_PV,CFG_FanOffTemp)OTU(FanCmd);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[Stop fan if not running or starting]]>
+</Comment>
+<Text>
+<![CDATA[XIO(StsRunning)XIO(StsStarting)OTU(FanCmd);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R06_Control" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========== PID DISCHARGE PRESSURE CONTROL ==========
+================= SIMPLE PID SIMULATION ===============]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[PID Setpoint from HMI]]>
+</Comment>
+<Text>
+<![CDATA[MOV(HMI_SP_Press,PID_SP);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[PID Process Value]]>
+</Comment>
+<Text>
+<![CDATA[MOV(PT102_PV,PID_PV);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[PID Error Calculation]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PID_Enable)XIO(PT102_Fault)SUB(PID_SP,PID_PV,PID_Err);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[PID Output = Kp*Err + Integral]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PID_Enable)XIC(PID_Auto)MUL(PID_Kp,PID_Err,PID_Out)MUL(PID_Ki,PID_Err,ASC_Flow)MUL(ASC_Flow,ScanTime,ASC_Flow)ADD(PID_Int,ASC_Flow,PID_Int)ADD(PID_Out,PID_Int,PID_Out);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[Clamp Output High]]>
+</Comment>
+<Text>
+<![CDATA[GRT(PID_Out,CFG_SpeedMax)MOV(CFG_SpeedMax,PID_Out);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[Clamp Output Low]]>
+</Comment>
+<Text>
+<![CDATA[LES(PID_Out,CFG_SpeedMin)MOV(CFG_SpeedMin,PID_Out);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[Anti-Windup: Clamp Integral]]>
+</Comment>
+<Text>
+<![CDATA[GRT(PID_Int,50.0)MOV(50.0,PID_Int);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[LES(PID_Int,-50.0)MOV(-50.0,PID_Int);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[========== ANTI-SURGE CONTROL ==========
+========== SIMPLE ASC SIMULATION =========]]>
+</Comment>
+<Text>
+<![CDATA[MOV(FT101_PV,ASC_Flow);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[Calculate Pressure Ratio]]>
+</Comment>
+<Text>
+<![CDATA[GRT(PT101_PV,0.1)DIV(PT102_PV,PT101_PV,ASC_PressRatio);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[Simplified Surge Limit Calculation]]>
+</Comment>
+<Text>
+<![CDATA[SUB(ASC_PressRatio,1.0,ASC_SurgeLimit)MUL(ASC_SurgeLimit,2000.0,ASC_SurgeLimit)ADD(ASC_SurgeLimit,1000.0,ASC_SurgeLimit);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[Surge Margin (%)]]>
+</Comment>
+<Text>
+<![CDATA[GRT(ASC_SurgeLimit,0.0)SUB(ASC_Flow,ASC_SurgeLimit,ASC_SurgeMargin)DIV(ASC_SurgeMargin,ASC_SurgeLimit,ASC_SurgeMargin)MUL(ASC_SurgeMargin,100.0,ASC_SurgeMargin);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[Surge Index (0=safe, 100=surge)]]>
+</Comment>
+<Text>
+<![CDATA[SUB(100.0,ASC_SurgeMargin,ASC_SurgeIndex);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[LES(ASC_SurgeIndex,0.0)MOV(0.0,ASC_SurgeIndex);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[GRT(ASC_SurgeIndex,100.0)MOV(100.0,ASC_SurgeIndex);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[Low Margin Alarm]]>
+</Comment>
+<Text>
+<![CDATA[LES(ASC_SurgeMargin,CFG_SurgeMarginAlm)OTE(ASC_LowMarginAlm);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[Open Recycle When Margin Low]]>
+</Comment>
+<Text>
+<![CDATA[XIC(ASC_Enable)XIC(ASC_Auto)LES(ASC_SurgeMargin,ASC_MarginSP)ADD(ASC_RecycleCmd,1.0,ASC_RecycleCmd);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[Close Recycle When Margin OK]]>
+</Comment>
+<Text>
+<![CDATA[XIC(ASC_Enable)XIC(ASC_Auto)GEQ(ASC_SurgeMargin,ASC_MarginSP)SUB(ASC_RecycleCmd,0.1,ASC_RecycleCmd);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Comment>
+<![CDATA[Minimum Recycle While Running]]>
+</Comment>
+<Text>
+<![CDATA[XIC(StsRunning)LES(ASC_RecycleCmd,CFG_RecycleMinRun)MOV(CFG_RecycleMinRun,ASC_RecycleCmd);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[GRT(ASC_RecycleCmd,100.0)MOV(100.0,ASC_RecycleCmd);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[LES(ASC_RecycleCmd,0.0)MOV(0.0,ASC_RecycleCmd);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Comment>
+<![CDATA[Output to Recycle Valve]]>
+</Comment>
+<Text>
+<![CDATA[XIC(ASC_Enable)MOV(ASC_RecycleCmd,Local:5:O.Ch0Data);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R07_Alarms" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[========== ALARM PROCESSING ==========]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[Combine All Alarms]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(StsTripped) ,XIC(StsESD) ,XIC(PT102_HH_Alm) ,XIC(TT102_HH_Alm) ,XIC(PT201_LL_Alm) ,XIC(ASC_LowMarginAlm) ,XIC(Alm_Gas) ,XIC(Alm_Fire) ,XIC(VFD_Faulted) ,XIC(LO_PumpFlt) ,XIC(XV101_Fault) ,XIC(XV102_Fault) ]OTE(AlmActive);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Silence Horn Command]]>
+</Comment>
+<Text>
+<![CDATA[XIC(HMI_SilenceHorn)OTL(AlmHornSil);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Reset Silence When All Clear]]>
+</Comment>
+<Text>
+<![CDATA[XIO(AlmActive)OTU(AlmHornSil);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+<Routine Name="R08_Outputs" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[XIC(StsTripped) ,XIC(StsESD) ]OTE(Local:3:O.Data.12);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[===== ALARM OUTPUTS =====]]>
+</Comment>
+<Text>
+<![CDATA[XIC(AlmActive)XIO(AlmHornSil)OTE(Local:3:O.Data.13);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+<Tasks>
+<Task Name="MainTask" Type="CONTINUOUS" Priority="10" Watchdog="500" DisableUpdateOutputs="false" InhibitTask="false">
+<ScheduledPrograms>
+<ScheduledProgram Name="MainProgram"/>
+</ScheduledPrograms>
+</Task>
+</Tasks>
+<CST MasterID="0"/>
+<WallClockTime LocalTimeAdjustment="0" TimeZone="0"/>
+<Trends/>
+<DataLogs/>
+<TimeSynchronize Priority1="128" Priority2="128" PTPEnable="false"/>
+<EthernetPorts>
+<EthernetPort Port="1" Label="1" PortEnabled="true"/>
+</EthernetPorts>
+</Controller>
+</RSLogix5000Content>
